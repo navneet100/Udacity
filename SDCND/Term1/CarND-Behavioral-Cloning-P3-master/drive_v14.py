@@ -22,6 +22,7 @@ from io import BytesIO
 
 from keras.models import model_from_json
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
+from keras.optimizers import Adam
 
 # Fix error with Keras and TensorFlow
 import tensorflow as tf
@@ -97,7 +98,9 @@ if __name__ == '__main__':
     with open(args.model, 'r') as jfile:
         model = model_from_json(jfile.read())
 
-    model.compile("adam", "mse")
+    opt = Adam(lr=0.0001)    
+    model.compile(loss="mse", optimizer=opt)        
+    #model.compile("adam", "mse")
     weights_file = args.model.replace('json', 'h5')
     model.load_weights(weights_file)
 
