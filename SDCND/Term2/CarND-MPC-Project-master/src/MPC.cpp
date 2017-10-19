@@ -7,7 +7,7 @@ using CppAD::AD;
 
 // TODO: Set the timestep length and duration
 size_t N = 25;//25;//100;//100//10
-double dt = 0.06;//0.015;//0.013;//0.01 // 0.1
+double dt = 0.05;//0.015;//0.013;//0.01 // 0.1
 
 
 
@@ -54,30 +54,29 @@ class FG_eval {
 
     fg[0] = 0;
 
+
     for(int i = 0; i < N;i++)
     {
-        fg[0] +=  1 * CppAD::pow(vars[cte_start + i] - ref_cte, 2);
-        fg[0] +=  1 * CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
-        fg[0] +=  2.5 *  CppAD::pow(vars[v_start + i] - ref_v, 2);// high value increases speed
+        fg[0] +=  35 * CppAD::pow(vars[cte_start + i] - ref_cte, 2);
+        fg[0] +=  35 * CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
+        fg[0] +=  10 *  CppAD::pow(vars[v_start + i] - ref_v, 2);// high value increases speed
     }
 
 
     for(int i = 0; i < N - 1;i++)
     {
-        fg[0] += 60000 * CppAD::pow(vars[delta_start + i], 2);
-        fg[0] += 67 * CppAD::pow(vars[a_start + i], 2);//high values reduces speed
+        fg[0] += 1000 * CppAD::pow(vars[delta_start + i], 2);
+        fg[0] += 120 * CppAD::pow(vars[a_start + i], 2);//high values reduces speed
+        fg[0] += 700*CppAD::pow(vars[delta_start + i] * vars[v_start+i], 2);
 
     }
 
     for(int i = 0; i < N - 2;i++)
     {
-        fg[0] += 40000 * CppAD::pow(vars[delta_start + i + 1] - vars[delta_start + i], 2);
-        fg[0] += 3500 * CppAD::pow(vars[a_start + i + 1] - vars[a_start + i], 2);
+        fg[0] += 1000 * CppAD::pow(vars[delta_start + i + 1] - vars[delta_start + i], 2);
+        fg[0] += 10 * CppAD::pow(vars[a_start + i + 1] - vars[a_start + i], 2);
 
     }
-
-
-
 
     fg[1 + x_start] = vars[x_start];
     fg[1 + y_start] = vars[y_start];

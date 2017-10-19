@@ -1,13 +1,13 @@
-#include "uWS.h"
-#include "libuv.h"
-#include "httpsocket.h"
-#include "hub.h"
-
+//#include "uWS.h"
+#include "uWS/uWS.h"
 #include <iostream>
 #include "json.hpp"
 #include "PID.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
+
+
 
 using namespace std;
 
