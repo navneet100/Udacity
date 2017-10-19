@@ -223,7 +223,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Import libraries</span>
@@ -275,7 +275,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span>
@@ -289,7 +289,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -310,7 +310,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">student_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -324,7 +324,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -418,14 +418,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">)</span>
 
 <span class="c"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="c"># exclude the Labels columns</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
 <span class="c"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;yes&#39;</span><span class="p">])</span>
@@ -455,7 +456,7 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -481,7 +482,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Extract feature columns</span>
@@ -563,7 +564,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -634,10 +635,39 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">X_all</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RangeIndex(start=0, stop=395, step=1)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">y_all</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 
 </div>
@@ -663,36 +693,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">y_all</span><span class="o">.</span><span class="n">index</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>RangeIndex(start=0, stop=395, step=1)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import any additional functionality you may need here</span>
@@ -709,7 +710,7 @@ Feature values:
 <span class="c">#X_all.reindex(np.random.permutation(X_all.index))</span>
 <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-                <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+                <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
 
 
 <span class="c"># Show the results of the split</span>
@@ -851,7 +852,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -926,7 +927,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[177]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import the three supervised learning models from sklearn</span>
@@ -939,8 +940,8 @@ Testing set has 95 samples.
 
 <span class="c"># TODO: Initialize the three models</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c">#from sklearn.tree import DecisionTreeClassifier</span>
 <span class="c">#clf_C = DecisionTreeClassifier()</span>
@@ -987,57 +988,57 @@ Testing set has 95 samples.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a GaussianNB using a training set size of 100. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8550.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7481.
 Training a GaussianNB using a training set size of 200. . .
-Trained model in 0.0020 seconds
+Trained model in 0.0010 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8321.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7132.
 Training a GaussianNB using a training set size of 300. . .
 Trained model in 0.0020 seconds
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8088.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7500.
 Training a SVC using a training set size of 100. . .
 Trained model in 0.0030 seconds
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for training set: 0.8591.
 Made predictions in 0.0020 seconds.
 F1 score for test set: 0.7838.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0090 seconds
-Made predictions in 0.0050 seconds.
+Trained model in 0.0060 seconds
+Made predictions in 0.0060 seconds.
 F1 score for training set: 0.8693.
-Made predictions in 0.0030 seconds.
+Made predictions in 0.0020 seconds.
 F1 score for test set: 0.7755.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0130 seconds
-Made predictions in 0.0120 seconds.
+Trained model in 0.0100 seconds
+Made predictions in 0.0080 seconds.
 F1 score for training set: 0.8692.
 Made predictions in 0.0030 seconds.
 F1 score for test set: 0.7586.
 Training a LogisticRegression using a training set size of 100. . .
-Trained model in 0.0040 seconds
-Made predictions in 0.0010 seconds.
+Trained model in 0.0020 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8571.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7612.
 Training a LogisticRegression using a training set size of 200. . .
-Trained model in 0.0060 seconds
+Trained model in 0.0040 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8380.
-Made predictions in 0.0060 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7794.
 Training a LogisticRegression using a training set size of 300. . .
-Trained model in 0.0080 seconds
-Made predictions in 0.0010 seconds.
+Trained model in 0.0090 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8381.
-Made predictions in 0.0020 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7910.
 </pre>
 </div>
@@ -1091,8 +1092,8 @@ F1 score for test set: 0.7910.
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0020</td>
 <td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.8321</td>
 <td style="text-align:center">0.7132</td>
 </tr>
@@ -1125,14 +1126,14 @@ F1 score for test set: 0.7910.
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0090</td>
-<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0060</td>
+<td style="text-align:center">0.0020</td>
 <td style="text-align:center">0.8693</td>
 <td style="text-align:center">0.7755</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0130</td>
+<td style="text-align:center">0.0100</td>
 <td style="text-align:center">0.0030</td>
 <td style="text-align:center">0.8692</td>
 <td style="text-align:center">0.7586</td>
@@ -1152,22 +1153,22 @@ F1 score for test set: 0.7910.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0040</td>
-<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.8571</td>
 <td style="text-align:center">0.7612</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0060</td>
-<td style="text-align:center">0.0060</td>
+<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.8380</td>
 <td style="text-align:center">0.7794</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0080</td>
-<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0090</td>
+<td style="text-align:center">0.0010</td>
 <td style="text-align:center">0.8381</td>
 <td style="text-align:center">0.7910</td>
 </tr>
@@ -1220,14 +1221,57 @@ F1 score for test set: 0.7910.
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">clf_C</span><span class="o">.</span><span class="n">coef_</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  2.49400900e-01,   2.66075403e-01,   5.25188258e-02,
+          4.62957477e-01,  -8.18018239e-02,   7.64226088e-02,
+          4.39053694e-01,   2.14761300e-01,   3.00715003e-01,
+          4.22009239e-01,   9.34670637e-02,   4.81984123e-02,
+          1.36863037e-01,   4.31096147e-02,   7.84184527e-01,
+         -1.26697672e-01,   4.39995222e-01,  -6.25115389e-01,
+          3.10552683e-01,  -1.36825919e-01,   1.08853642e-02,
+         -7.72900967e-04,   3.31637077e-01,  -7.21230948e-02,
+          1.29525619e-01,   2.65043646e-01,   1.93030132e-01,
+          2.47431112e-01,   2.73493180e-01,  -5.44798824e-03,
+          6.21606664e-02,   4.00116928e-01,  -8.19859946e-01,
+         -6.09602129e-01,  -4.95732242e-01,   5.21470773e-02,
+         -9.40146085e-02,  -2.61982672e-01,   6.28825981e-01,
+          4.05500933e-01,  -2.51351407e-01,   1.12109313e-01,
+          3.93029071e-02,  -5.31384967e-01,  -4.20400888e-02,
+          2.83578405e-01,  -1.41094125e-01,  -2.93731094e-02]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-After running Logistic Regression (LR) model, we will have results in the form of probability of success. We will be able to justify our answers by showing the probability of success for training\existing data. We can related the output to the independent variables and show that which factors are important and which are not to make someone succeed. We will see relative importance( weights) of independence factors. The model can be shown in an equation form to justify the dependence of success on relative weights of features.</p>
-
+<p><strong>Answer: </strong></p>
+<h5 id="We-have-done-some-research-and-have-identified-ways-to-improve-the-graduation-rate.-We-have-used-Logistic-Regression-model.-In-this-model,-we-have-tried-to-identify-the-characteristics-of-students-to-see-which-ones-help-in-increasing-their-probability-to-succeed.-We-have-used-features-like---age,-gender,-famsize,-studytime,-traveltime,-internet,-health-and-absences-etc.-Based-on-these-features,-we-have-developed-a-model-which-can-predict-the-probability-of-success.-We-can-modify-these-features-(quantity\weights)-as-per-the-developed-model-to-increase-students'-chances-of-success.">We have done some research and have identified ways to improve the graduation rate. We have used Logistic Regression model. In this model, we have tried to identify the characteristics of students to see which ones help in increasing their probability to succeed. We have used features like - age, gender, famsize, studytime, traveltime, internet, health and absences etc. Based on these features, we have developed a model which can predict the probability of success. We can modify these features (quantity\weights) as per the developed model to increase students' chances of success.<a class="anchor-link" href="#We-have-done-some-research-and-have-identified-ways-to-improve-the-graduation-rate.-We-have-used-Logistic-Regression-model.-In-this-model,-we-have-tried-to-identify-the-characteristics-of-students-to-see-which-ones-help-in-increasing-their-probability-to-succeed.-We-have-used-features-like---age,-gender,-famsize,-studytime,-traveltime,-internet,-health-and-absences-etc.-Based-on-these-features,-we-have-developed-a-model-which-can-predict-the-probability-of-success.-We-can-modify-these-features-(quantity\weights)-as-per-the-developed-model-to-increase-students'-chances-of-success.">&#182;</a></h5><h5 id="How-this-model-will-work-is-that-we-will-select-a-particular-student,-get-the-values-of-features-from-this-student-(-his-gender,-age,-his-study-time,-travel-time,-his-health-rating,-his-internet-access,-his-absences-and-values-for-other-properties-and-will-put-these-values-in-the-model-and-predict-his-chances\probability-of-success.-then-we-will-show-that-changing-particular-features-in-a-specific-quantity-can-increase-his-chances-of-success.">How this model will work is that we will select a particular student, get the values of features from this student ( his gender, age, his study time, travel time, his health rating, his internet access, his absences and values for other properties and will put these values in the model and predict his chances\probability of success. then we will show that changing particular features in a specific quantity can increase his chances of success.<a class="anchor-link" href="#How-this-model-will-work-is-that-we-will-select-a-particular-student,-get-the-values-of-features-from-this-student-(-his-gender,-age,-his-study-time,-travel-time,-his-health-rating,-his-internet-access,-his-absences-and-values-for-other-properties-and-will-put-these-values-in-the-model-and-predict-his-chances\probability-of-success.-then-we-will-show-that-changing-particular-features-in-a-specific-quantity-can-increase-his-chances-of-success.">&#182;</a></h5><h5 id="We-can-show-using-weights-calculated-above-that-by-multiplying-the-values-captured-from-a-student-and-multipying-these-values-with-the-weights-and-putting-the-sum-in-a-sigmoid-function-can-provide-us-a-value-on-the-basis-of-which-we-can-predict-success-rate.-We-can-put-threshold-value-at-0.5-and-show-that-if-the-calculated-value-is-above-0.5-then-he-will-graduate-and-otherwise-not.-We-can-show-the-management-that-if-the-student-is-a-boundary-case-then-what-features-can-be-changed-to-make-him-succeed-or-make-him-increase-his-chances-of-success.">We can show using weights calculated above that by multiplying the values captured from a student and multipying these values with the weights and putting the sum in a sigmoid function can provide us a value on the basis of which we can predict success rate. We can put threshold value at 0.5 and show that if the calculated value is above 0.5 then he will graduate and otherwise not. We can show the management that if the student is a boundary case then what features can be changed to make him succeed or make him increase his chances of success.<a class="anchor-link" href="#We-can-show-using-weights-calculated-above-that-by-multiplying-the-values-captured-from-a-student-and-multipying-these-values-with-the-weights-and-putting-the-sum-in-a-sigmoid-function-can-provide-us-a-value-on-the-basis-of-which-we-can-predict-success-rate.-We-can-put-threshold-value-at-0.5-and-show-that-if-the-calculated-value-is-above-0.5-then-he-will-graduate-and-otherwise-not.-We-can-show-the-management-that-if-the-student-is-a-boundary-case-then-what-features-can-be-changed-to-make-him-succeed-or-make-him-increase-his-chances-of-success.">&#182;</a></h5><h5 id="weightedSum-=-multiply-each-feature-with-its-weight">weightedSum = multiply each feature with its weight<a class="anchor-link" href="#weightedSum-=-multiply-each-feature-with-its-weight">&#182;</a></h5><h5 id="SigmoidFunction-:-1/(1+exp(weightedSum))">SigmoidFunction : 1/(1+exp(weightedSum))<a class="anchor-link" href="#SigmoidFunction-:-1/(1+exp(weightedSum))">&#182;</a></h5>
 </div>
 </div>
 </div>
@@ -1257,10 +1301,11 @@ After running Logistic Regression (LR) model, we will have results in the form o
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[179]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="c"># TODO: Create the parameters list you wish to tune</span>
@@ -1272,7 +1317,7 @@ After running Logistic Regression (LR) model, we will have results in the form o
 <span class="c">#clf =  GridSearchCV(LogisticRegression(penalty=&#39;l2&#39;), parameters, scoring=f1_scorer)</span>
 <span class="c">#clf =  LogisticRegression(penalty=&#39;l2&#39;)</span>
 <span class="c">#clf =  LogisticRegression(penalty=&#39;l1&#39;, tol=0.001)</span>
-<span class="n">clf</span> <span class="o">=</span>  <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span>  <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span><span class="n">pos_label</span><span class="o">=</span><span class="s">&#39;yes&#39;</span><span class="p">)</span>
@@ -1302,11 +1347,88 @@ After running Logistic Regression (LR) model, we will have results in the form o
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&apos;penalty&apos;: &apos;l1&apos;, &apos;C&apos;: 0.1, &apos;tol&apos;: 0.0001}
-Made predictions in 0.0010 seconds.
-Tuned model has a training F1 score of 0.8267.
+<pre>{&apos;penalty&apos;: &apos;l1&apos;, &apos;C&apos;: 0.1, &apos;tol&apos;: 0.01}
+Made predictions in 0.0000 seconds.
+Tuned model has a training F1 score of 0.8292.
 Made predictions in 0.0000 seconds.
 Tuned model has a testing F1 score of 0.7917.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
+<span class="n">normer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">normer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">normer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+<span class="c"># TODO: Create the parameters list you wish to tune</span>
+<span class="c">#parameters = {&#39;C&#39;: [0.001, 0.01, 0.1, 1, 10, 100, 1000] }</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s">&#39;penalty&#39;</span><span class="p">:[</span><span class="s">&#39;l1&#39;</span><span class="p">,</span><span class="s">&#39;l2&#39;</span><span class="p">],</span>
+              <span class="s">&#39;tol&#39;</span><span class="p">:[</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>  <span class="s">&#39;class_weight&#39;</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;balanced&#39;</span><span class="p">]}</span>
+<span class="c">#parameters = {&#39;C&#39;: [0.0001,0.001, 0.01, 0.1, 1, 10, 100, 1000]}</span>
+
+<span class="c"># TODO: Initialize the classifier</span>
+<span class="c">#clf =  GridSearchCV(LogisticRegression(penalty=&#39;l2&#39;), parameters, scoring=f1_scorer)</span>
+<span class="c">#clf =  LogisticRegression(penalty=&#39;l2&#39;)</span>
+<span class="c">#clf =  LogisticRegression(penalty=&#39;l1&#39;, tol=0.001)</span>
+<span class="n">clf</span> <span class="o">=</span>  <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
+<span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span><span class="n">pos_label</span><span class="o">=</span><span class="s">&#39;yes&#39;</span><span class="p">)</span>
+
+<span class="c"># TODO: Perform grid search on the classifier using the f1_scorer as the scoring method</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">clf</span><span class="p">,</span><span class="n">param_grid</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pre_dispatch</span><span class="o">=</span><span class="s">&#39;2*n_jobs&#39;</span><span class="p">)</span>
+
+<span class="c"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
+<span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c"># Get the estimator</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="k">print</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_params_</span>
+
+<span class="c"># Report the final F1 score for training and testing after parameter tuning</span>
+<span class="k">print</span> <span class="s">&quot;Tuned model has a training F1 score of {:.4f}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">predict_labels</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;Tuned model has a testing F1 score of {:.4f}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">predict_labels</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[Parallel(n_jobs=-1)]: Done  42 tasks      | elapsed:   49.0s
+[Parallel(n_jobs=-1)]: Done 800 out of 800 | elapsed:   54.6s finished
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fitting 5 folds for each of 160 candidates, totalling 800 fits
+{&apos;penalty&apos;: &apos;l1&apos;, &apos;C&apos;: 10, &apos;tol&apos;: 0.1, &apos;class_weight&apos;: None}
+Made predictions in 0.0000 seconds.
+Tuned model has a training F1 score of 0.8300.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.7973.
 </pre>
 </div>
 </div>
@@ -1332,8 +1454,8 @@ Tuned model has a testing F1 score of 0.7917.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
 Final Tuned F1_scores are :
-Training : 0.8292
-Testing : 0.7917</p>
+Training : 0.8300
+Testing : 0.7973</p>
 <p>Untuned F1_scores were:
 Training : 0.8381
 Testing : 0.7910</p>
@@ -1353,6 +1475,19 @@ Testing : 0.7910</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
