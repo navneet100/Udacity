@@ -1,0 +1,574 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': None}}")
+ -- forward : 2.41
+ -- right : 2.48
+ -- None : -3.32
+ -- left : 3.60
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : -32.49
+ -- right : -18.69
+ -- None : 2.73
+ -- left : -39.86
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : -0.99
+ -- right : 1.47
+ -- None : 3.73
+ -- left : -21.82
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : 2.94
+ -- right : 0.77
+ -- None : -3.91
+ -- left : -0.71
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : 0.76
+ -- right : 2.36
+ -- None : -2.96
+ -- left : 3.68
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': None}}")
+ -- forward : 2.96
+ -- right : 2.39
+ -- None : 2.29
+ -- left : 3.65
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': None}}")
+ -- forward : 1.55
+ -- right : -0.27
+ -- None : -4.04
+ -- left : -19.85
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : 0.63
+ -- right : 1.15
+ -- None : -3.89
+ -- left : -13.69
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'right'}}")
+ -- forward : 3.64
+ -- right : 3.17
+ -- None : -3.31
+ -- left : 2.62
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'right'}}")
+ -- forward : -6.98
+ -- right : 3.61
+ -- None : 2.13
+ -- left : -8.75
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : -0.06
+ -- right : 0.29
+ -- None : -2.10
+ -- left : -18.63
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': None}}")
+ -- forward : 2.10
+ -- right : 3.28
+ -- None : 1.96
+ -- left : 2.34
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 3.24
+ -- left : -31.68
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': None}}")
+ -- forward : 2.19
+ -- right : 3.56
+ -- None : -3.56
+ -- left : 2.50
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : -5.43
+ -- right : 1.60
+ -- None : 3.01
+ -- left : -6.57
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': None}}")
+ -- forward : -8.13
+ -- right : 2.45
+ -- None : 3.80
+ -- left : -8.02
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : 0.00
+ -- right : 3.38
+ -- None : 3.13
+ -- left : -6.96
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': None}}")
+ -- forward : -8.08
+ -- right : 3.17
+ -- None : 3.81
+ -- left : -9.62
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : -38.24
+ -- right : -17.79
+ -- None : 3.69
+ -- left : -37.64
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'left'}}")
+ -- forward : -8.67
+ -- right : 2.37
+ -- None : 3.69
+ -- left : -11.66
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 2.18
+ -- None : 2.15
+ -- left : -6.08
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : 1.69
+ -- right : 0.00
+ -- None : -3.94
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : -38.97
+ -- right : -16.26
+ -- None : 2.54
+ -- left : -36.60
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : 1.26
+ -- right : -0.09
+ -- None : 0.00
+ -- left : -19.28
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : -8.68
+ -- right : 0.08
+ -- None : 0.00
+ -- left : -38.10
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : -30.92
+ -- right : -15.64
+ -- None : 2.89
+ -- left : -32.37
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': None}}")
+ -- forward : 2.49
+ -- right : 3.74
+ -- None : -3.78
+ -- left : -18.01
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : 0.00
+ -- right : -17.19
+ -- None : 0.72
+ -- left : -37.61
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : 0.00
+ -- right : 0.98
+ -- None : -0.99
+ -- left : -7.07
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': None}}")
+ -- forward : -13.04
+ -- right : 2.53
+ -- None : 3.74
+ -- left : -11.95
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : 1.02
+ -- right : 0.90
+ -- None : -4.34
+ -- left : -11.64
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'left'}}")
+ -- forward : 3.76
+ -- right : 2.70
+ -- None : -3.74
+ -- left : 2.10
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 2.14
+ -- None : 0.00
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : 0.00
+ -- right : -11.25
+ -- None : 2.28
+ -- left : -34.22
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': None}}")
+ -- forward : 3.83
+ -- right : 1.93
+ -- None : -3.25
+ -- left : -12.98
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : 1.93
+ -- right : 1.32
+ -- None : 0.09
+ -- left : 1.31
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': None}}")
+ -- forward : 3.65
+ -- right : 2.61
+ -- None : 2.42
+ -- left : 2.69
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : 3.74
+ -- right : 2.72
+ -- None : -3.33
+ -- left : 2.20
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : -6.60
+ -- right : 0.97
+ -- None : 2.99
+ -- left : -14.77
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : -38.36
+ -- right : -17.74
+ -- None : 3.75
+ -- left : -38.51
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : 3.16
+ -- right : 1.98
+ -- None : 1.76
+ -- left : 2.14
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : -7.39
+ -- right : 2.03
+ -- None : 3.24
+ -- left : -4.87
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': None}}")
+ -- forward : -22.96
+ -- right : 3.80
+ -- None : 3.47
+ -- left : -10.51
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': None}}")
+ -- forward : 3.58
+ -- right : 2.88
+ -- None : -2.99
+ -- left : 2.18
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : 1.26
+ -- right : 0.96
+ -- None : 2.13
+ -- left : 1.68
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : 2.29
+ -- right : 4.09
+ -- None : -3.03
+ -- left : 3.09
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': None}}")
+ -- forward : -8.34
+ -- right : 3.65
+ -- None : 1.31
+ -- left : -38.68
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': None}}")
+ -- forward : 3.25
+ -- right : 2.44
+ -- None : -3.82
+ -- left : -18.72
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : 0.21
+ -- right : 0.00
+ -- None : -2.25
+ -- left : 0.00
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'right'}}")
+ -- forward : -10.11
+ -- right : 2.54
+ -- None : 3.52
+ -- left : -15.47
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : 0.77
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -12.73
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : -36.20
+ -- right : -10.30
+ -- None : 3.65
+ -- left : -25.31
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : -31.22
+ -- right : -15.65
+ -- None : 2.31
+ -- left : -37.16
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': None}}")
+ -- forward : 0.67
+ -- right : 2.76
+ -- None : -3.34
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': None}}")
+ -- forward : -8.06
+ -- right : 3.84
+ -- None : 3.20
+ -- left : -7.80
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'right'}}")
+ -- forward : -2.17
+ -- right : 0.73
+ -- None : 3.10
+ -- left : -7.48
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': None}}")
+ -- forward : 1.76
+ -- right : 1.49
+ -- None : -4.77
+ -- left : -19.14
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : -14.88
+ -- right : 0.59
+ -- None : 3.04
+ -- left : -25.19
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : -22.31
+ -- right : 0.56
+ -- None : 1.34
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'left'}}")
+ -- forward : 2.20
+ -- right : 3.36
+ -- None : -2.84
+ -- left : 2.03
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : 2.66
+ -- right : 0.00
+ -- None : 0.77
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : 0.82
+ -- right : 2.59
+ -- None : 1.33
+ -- left : 0.00
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : 0.76
+ -- right : 1.21
+ -- None : 1.04
+ -- left : 3.13
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : -7.14
+ -- right : 0.92
+ -- None : 0.00
+ -- left : -3.98
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : 2.71
+ -- right : 2.75
+ -- None : 1.17
+ -- left : 3.13
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'left'}}")
+ -- forward : 2.39
+ -- right : 2.90
+ -- None : -2.97
+ -- left : 3.37
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': None}}")
+ -- forward : -10.46
+ -- right : 2.59
+ -- None : 3.87
+ -- left : -8.90
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': None}}")
+ -- forward : -8.72
+ -- right : 2.32
+ -- None : 3.61
+ -- left : -37.39
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'forward'}}")
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 1.59
+ -- left : -28.96
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : -7.66
+ -- right : 0.00
+ -- None : 0.93
+ -- left : -27.11
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : 0.00
+ -- right : 0.65
+ -- None : -3.92
+ -- left : 0.00
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'left'}}")
+ -- forward : 2.40
+ -- right : 1.84
+ -- None : -4.23
+ -- left : -7.40
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -11.99
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'right'}}")
+ -- forward : 1.81
+ -- right : 1.07
+ -- None : -3.75
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : -28.41
+ -- right : 1.38
+ -- None : 1.90
+ -- left : -30.51
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'left'}}")
+ -- forward : -8.74
+ -- right : 2.90
+ -- None : 3.57
+ -- left : -8.96
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'left'}}")
+ -- forward : 0.96
+ -- right : 0.00
+ -- None : -5.15
+ -- left : -3.11
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'forward'}}")
+ -- forward : -36.22
+ -- right : -17.93
+ -- None : 3.16
+ -- left : -39.00
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': None}}")
+ -- forward : -8.78
+ -- right : 1.84
+ -- None : 3.26
+ -- left : -39.09
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.11
+ -- left : -10.39
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 2.15
+ -- None : 1.49
+ -- left : 1.21
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'right', 'left': 'right'}}")
+ -- forward : -8.36
+ -- right : 0.00
+ -- None : 2.86
+ -- left : 0.00
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'right'}}")
+ -- forward : 0.73
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': None, 'left': 'left'}}")
+ -- forward : -8.37
+ -- right : 3.30
+ -- None : 3.52
+ -- left : -19.50
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': None, 'left': 'right'}}")
+ -- forward : 1.82
+ -- right : 1.73
+ -- None : -3.39
+ -- left : 2.83
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': None}}")
+ -- forward : -11.60
+ -- right : 4.13
+ -- None : 3.57
+ -- left : -8.38
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': None}}")
+ -- forward : -8.44
+ -- right : 2.90
+ -- None : 3.89
+ -- left : -8.53
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'left'}}")
+ -- forward : -8.27
+ -- right : 1.23
+ -- None : 2.48
+ -- left : -7.79
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : 1.17
+ -- right : 0.52
+ -- None : 0.00
+ -- left : -18.01
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'forward'}}")
+ -- forward : 0.87
+ -- right : 2.07
+ -- None : 0.00
+ -- left : 0.00
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'red', 'oncoming': 'forward', 'left': None}}")
+ -- forward : -8.03
+ -- right : 2.58
+ -- None : 3.63
+ -- left : -8.68
+
+("{'waypoint': 'left'}", "{'inputs': {'light': 'red', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : -38.03
+ -- right : -7.17
+ -- None : 3.27
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'right', 'left': 'right'}}")
+ -- forward : 0.00
+ -- right : 0.58
+ -- None : 0.00
+ -- left : 0.00
+
+("{'waypoint': 'right'}", "{'inputs': {'light': 'green', 'oncoming': 'left', 'left': 'forward'}}")
+ -- forward : 1.77
+ -- right : 0.00
+ -- None : 1.61
+ -- left : 1.42
+
+("{'waypoint': 'forward'}", "{'inputs': {'light': 'green', 'oncoming': 'forward', 'left': 'right'}}")
+ -- forward : 2.31
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -15.73
+
