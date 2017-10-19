@@ -2,6 +2,10 @@
 #define PID_H
 
 class PID {
+
+private:
+	double prev_cte;
+	double sum_cte;
 public:
   /*
   * Errors

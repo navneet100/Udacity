@@ -7,7 +7,7 @@
 #include <string>
 #include <fstream>
 #include "kalman_filter.h"
-#include "tools.h"
+#include "tools.h" //also in kalman_filter.h
 
 class FusionEKF {
 public:
@@ -32,11 +32,11 @@ public:
   KalmanFilter ekf_;
 
 private:
-  // check whether the tracking toolbox was initialized or not (first measurement)
+  // check whether the tracking toolbox was initiallized or not (first measurement)
   bool is_initialized_;
 
   // previous timestamp
-  long long previous_timestamp_;
+  long long previous_timestamp_; //navneet changed long to long long
 
   // tool object used to compute Jacobian and RMSE
   Tools tools;
