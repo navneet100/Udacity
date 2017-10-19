@@ -97,14 +97,16 @@ int main() {
           double v = j[1]["speed"];
 
           double steer_value = j[1]["steering_angle"];
-          double throttle_value = j[1]["throttle"];
+          double throttle = j[1]["throttle"];
+
 
           double Lf = 2.67;//2.67;
 
           double latency = 0.1;
 
-          double throttle = j[1]["throttle"];
-          double steering_angle = j[1]["steering_angle"];
+          //v = v * 1609.34/3600;
+
+
 
           /*
           * TODO: Calculate steering angle and throttle using MPC.
@@ -130,20 +132,23 @@ int main() {
           auto coeffs = polyfit(ptsx_transform, ptsy_transform, 3); //3
 
 
-          double cte = polyeval(coeffs,0);
+          double cte = polyeval(coeffs,0.0);
 
-          double epsi = psi - atan(coeffs[1]);
+
+          double epsi =  - atan(coeffs[1]);
 
           //latency
-          px = px + v * cos(-psi) * latency;
-          py = py + v * sin(-psi) * latency;
-          psi = psi + v * steer_value/Lf * latency;
-          v = v + throttle_value * latency;
-          cte = cte + v * sin(-epsi) * latency;
+          px =  v * latency;
+          py =  0;
+          psi = -1 * v * steer_value/Lf * latency;
+          v = v + throttle * latency;
+          cte = cte + v * sin(epsi) * latency;
           epsi = psi - atan(coeffs[1] + 2 * px * coeffs[2] + 3 * coeffs[3] * pow(px,2));
+          //epsi = psi - atan(coeffs[1]);
 
           Eigen::VectorXd state(6);
-          state << 0,0,0,v,cte,epsi;
+          state << px,py,psi,v,cte,epsi;
+
 
 
           auto vars = mpc.Solve(state,coeffs);
@@ -173,7 +178,7 @@ int main() {
           vector<double> next_x_vals;
           vector<double> next_y_vals;
 
-          double poly_inc = 2.75;//2.5;
+          double poly_inc = 3;//2.5;
           int num_points = 25;//25;
           for(int i = 1;i < num_points;i++)
           {
