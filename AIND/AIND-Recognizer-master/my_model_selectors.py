@@ -18,6 +18,7 @@ class ModelSelector(object):
                  min_n_components=2, max_n_components=10,
                  random_state=14, verbose=False):
         self.words = all_word_sequences
+        #print(all_word_sequences)
         self.hwords = all_word_Xlengths
         self.sequences = all_word_sequences[this_word]
         self.X, self.lengths = all_word_Xlengths[this_word]
@@ -34,6 +35,8 @@ class ModelSelector(object):
     def base_model(self, num_states):
         # with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+        
         # warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             hmm_model = GaussianHMM(n_components=num_states, covariance_type="diag", n_iter=1000,
@@ -62,7 +65,7 @@ class SelectorConstant(ModelSelector):
 
 
 class SelectorBIC(ModelSelector):
-    """ select the model with the lowest Bayesian Information Criterion(BIC) score
+    """ select the model with the lowest Baysian Information Criterion(BIC) score
 
     http://www2.imm.dtu.dk/courses/02433/doc/ch6_slides.pdf
     Bayesian information criteria: BIC = -2 * logL + p * logN
@@ -75,27 +78,87 @@ class SelectorBIC(ModelSelector):
         :return: GaussianHMM object
         """
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+        try:
+            minBIC = None
+            bestModel = None
+            
+            num_states = self.min_n_components            
+           
+            while  num_states <= self.max_n_components:
+                
+                model = self.base_model(num_states) 
+                
+                logL  = model.score(self.X, self.lengths )
+                
+                #initial probabilities + transition probabilites + Emission probablities
+                #num_Features = len(self.X[0])
+                num_Features = model.n_features
+                #p =  (num_states - 1)   + (num_states * ( num_states - 1)) + (2 * num_states * num_Features)
+                #simplification of above
+                p =  num_states * num_states - 1   + (2 * num_states * num_Features)
+                
+                num_data_points = len(self.X)
+                
+                BIC = -2.0 * logL + p * np.log(num_data_points)
+                
+                if minBIC == None:
+                    minBIC = BIC
+                    bestModel = model
+                else:
+                    if BIC < minBIC:
+                        minBIC = BIC
+                        bestModel = model
+                num_states += 1           
+        except:
+            return self.base_model(self.n_constant)
+        
+        return bestModel 
 
-        # TODO implement model selection based on BIC scores
-        raise NotImplementedError
-
-
+            
 class SelectorDIC(ModelSelector):
     ''' select best model based on Discriminative Information Criterion
 
     Biem, Alain. "A model selection criterion for classification: Application to hmm topology optimization."
     Document Analysis and Recognition, 2003. Proceedings. Seventh International Conference on. IEEE, 2003.
     http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.6208&rep=rep1&type=pdf
-    https://pdfs.semanticscholar.org/ed3d/7c4a5f607201f3848d4c02dd9ba17c791fc2.pdf
     DIC = log(P(X(i)) - 1/(M-1)SUM(log(P(X(all but i))
     '''
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
 
         # TODO implement model selection based on DIC scores
-        raise NotImplementedError
-
+        #raise NotImplementedError
+        try:
+            bestDIC = None
+            bestModel = None
+            
+            for n in range(self.min_n_components, self.max_n_components + 1):        
+                model = self.base_model(n)            
+                logLCurrent  = model.score(self.X, self.lengths )
+                
+                otherWordScores = []
+                
+                for word, (X, lengths) in self.hwords.items():
+                    if word != self.this_word:        
+                        otherWordScores.append(model.score(X, lengths))
+                        
+                meanOthersLogL = np.mean(otherWordScores)
+                
+                diffLogL = logLCurrent - meanOthersLogL
+                if bestDIC == None:
+                    bestDIC = diffLogL
+                    bestModel = model
+                else:
+                    if diffLogL > bestDIC:
+                        bestDIC = diffLogL
+                        bestModel = model
+       
+        except:
+            return self.base_model(self.n_constant)
+        return bestModel 
 
 class SelectorCV(ModelSelector):
     ''' select best model based on average log Likelihood of cross-validation folds
@@ -104,6 +167,35 @@ class SelectorCV(ModelSelector):
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
-
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
         # TODO implement model selection using CV
-        raise NotImplementedError
+        #raise NotImplementedError
+        num_folds = 2
+        
+        try:
+            kf = KFold(n_splits = num_folds)
+            
+            bestCV = None
+            bestModel = None
+            
+            scoreCV = []
+            
+            for n in range(self.min_n_components, self.max_n_components + 1):        
+                for trainIndices, testIndices in kf.split(self.sequences):  
+                    self.X, self.lengths = combine_sequences(trainIndices, self.sequences)   
+                    model = self.base_model(n)                    
+                    X, l = combine_sequences(testIndices, self.sequences)
+                    scoreCV.append(model.score(X, l))   
+                
+                avgScore = np.mean(scoreCV)
+                if bestCV == None:
+                    bestCV = avgScore
+                    bestModel = model
+                else:
+                    if avgScore > bestCV:
+                        bestCV = avgScore
+                        bestModel = model    
+        except:
+            return self.base_model(self.n_constant)
+        
+        return bestModel 
