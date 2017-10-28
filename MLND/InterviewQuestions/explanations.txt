@@ -1,1 +1,110 @@
+ Question 1
+ Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
+ Design :
+ For finding whether an anagram  of a string is present in another string, I sorted the search string. Then all possible substrings of length same as that of search string are obtained from main string by iterating from the start of the string till the totalLen - searchStringlength.
+ All substrings are sorted and put in a list. If ordered search string is same as any string in this substring list, then it means the anagram of a search string is present in main string. This is based on the logic that same anagrams will have same characters in equal counts. So if two strings in sorted order are same, then it means that they have same count of each character in string.
+
+
+ Time Complexity:
+ question1 uses python sorted function to sort sub strings of a string and it sorts search string too. 
+ question1 repeats sorted function a fixed number(k) of times( number of possible substrings). 
+ Then a search operation is performed to find a search string in list of substrings. 
+ Sorted function has O(nlog(n)) complexity and since this is repeated for k number of times
+ Search operation has O(n) complexity.
+
+ Therefore, overall time complexity of question1 is O(n^2 log n) 
+ (Note: O(n^2 log n + n) is reduced to O(n^2 log n))
+
+ Space Complexity:
+ question1 uses n units to store main string and k units to store search string.
+ question1 creates n-k substrings of size k.
+ Overall space used is n + k + (n-k) * k which is of the order of O(n)
+
+
+ Ref: https://wiki.python.org/moin/TimeComplexity
+
+
+======================================================================================================================================================================================================
+
+ Question 2
+ Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
+
+ Design :
+ Palindrome is a string which remains same when reversed. To find a largest palindrome in a string, string is traversed from start to end and at every character, an increasing number of letters are checked to left and right for equality, if these are equal, then the substring being processed is the palindrome. This way, strings of all possible lengths from 1 to original string length are processed to be checked for being a palindrome. For odd length strings with length in odd numbers, there are equal number of characters to the left and right of a middle character. For even length strings, half of the string length is considered as left string and other half as right string and right forward string is matched character wise with reverse of left string to check for being a palindrome.
+
+ Time Complexity:
+  For a string of length n, starting from first letter, each character is checked for the character index number of times whether a word centered at this particular character is a palindrome. First character is checked once as there is no letter to the left of this. Second character is checked twice, first for itself alone, then along with left(1st) and right characters( 3rd). Same is repeated for all characters till end. Number of operations till half is same as those from half till end. So complexity calculation is
+ time = (1 + 2  + 3 ...........+ n/2) * 2 = (n/2) * ( n/2 + 1) / 2 * 2
+ time complexity is of the order O(n^2)
+
+
+ Space Complexity:
+ For space, it is making strings of lengths 1 to n/2 , n number of times at different times and storing palindromes in a list. As the strings are created and saved at different times, it can use same space repeatedly and it results in space complexity to be O(n).
+
+======================================================================================================================================================================================================
+Question 3
+
+Given an undirected graph G, find the minimum spanning tree within G. A minimum spanning tree connects all vertices in a graph with the smallest possible total weight of edges. Your function should take in and return an adjacency list structured like this:
+
+{'A': [('B', 2)],
+ 'B': [('A', 2), ('C', 5)], 
+ 'C': [('B', 5)]}
+Vertices are represented as unique strings. The function definition should be question3(G)
+
+
+ Design :
+ Input dictionary has vertices as keys and dict values shows edges corresponding to the keys. Keys are one end of the edge and first entry of the values if second end of the edge, second entry of the dict value is the weight of the edges.
+ Edges are taken from the dict values, unique edges are stored in uniqEdges. These edges are ordered on the basis of weight.
+ Then edges are processed starting from lower weights. For each edge, vertices are checked and these are added to one set. For subsequent edges, vertices are checked whether these are part of any existing set and then these are made part of existing set, otherwise a new set is made. If both the edges are already in the same set, then edge is not added in the FinalEdges list, otherwise an edge is added in the finalEdges list. This process continues until there are verticesCount - 1 edges in the finalEdges list.
+
+
+ Time Complexity:
+ Edges are  sorted ( complexity - O(n log n) ), then each unique edge is processed - total k times, during each processing N nodes are traversed twice for each node of the edge - total = k*2N; 2 comparison and 2 union operations per edge, then one comparison, one assignment or append operations per final edge
+ Total operations = sorting + K * 2N + 4*k + 2 * ( N-1) 
+ So time complexity is of order of - O(n log n) + O(n) as n log n is greater than n so time complexity is of the order of O(n log n)
+
+
+ Space Complexity:
+ For N nodes and K edges, N nodes spaces, 2K edges and 2k Weights are stored. Finalgraph needs N-1 spaces. so Toal spaces used are N + 4k + (N-1) + constant number for temp variables during processing = 2N + 4k + c
+ So space complexity is of the order of O(n).
+
+
+======================================================================================================================================================================================================
+
+Question 4
+
+Find the least common ancestor between two nodes on a binary search tree. The least common ancestor is the farthest node from the root that is an ancestor of both nodes. For example, the root is a common ancestor of all nodes on the tree, but if both nodes are descendents of the root's left child, then that left child might be the lowest common ancestor. You can assume that both nodes are in the tree, and the tree itself adheres to all BST properties. The function definition should look like question4(T, r, n1, n2), where T is the tree represented as a matrix, where the index of the list is equal to the integer stored in that node and a 1 represents a child node, r is a non-negative integer representing the root, and n1 and n2 are non-negative integers representing the two nodes in no particular order. For example, one test case might be
+
+question4([[0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [1, 0, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4) and the answer would be 3.
+
+ Design :
+ Using adjacency matrix, row corresponding to the root/base node is selected and from this, root node's children are found. Column indexes of these children show child node numbers. BST tree is built using rows and columns of this adjacency matrix. 2 given input nodes\numbers are compared to these child numbers, if two input numbers are on the opposite( one greater and one less than) side of the root/base node, then the root/base node is the common parent. If these are on the same side,( both numbers greater or both lower) then child on the same side of the base node  is set as the base node with which next comparison is to be made. This process is repeated until two input numbers are found on the opposite sides of base node.
+
+ Time Complexity:
+ As this involves traversing adjacency row * column times, checking 1 for finding children and  then 2 comparisons for 2 input numbers with children, total operations = n * n *2, so time complexity is O(n^2)
+
+
+ Space Complexity:
+ Adjacency matrix requires n * n space and 3 spaces are required for root, and 2 input nodes. Space complexity is O(n^2)
+======================================================================================================================================================================================================
+
+Question 5
+
+Find the element in a singly linked list that's m elements from the end. For example, if a linked list has 5 elements, the 3rd element from the end is the 3rd element. The function definition should look like question5(ll, m), where ll is the first node of a linked list and m is the "mth number from the end". You should copy/paste the Node class below to use as a representation of a node in the linked list. Return the value of the node at that position.
+
+class Node(object):
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+	
+ Design :
+ A linked list is created and first node is set as the Head node. For finding an element m units from end, linked list ( ll) needs to be traversed once to find its length. Then it can be traversed again length - m + 1 number of times to get the mth element from end. Instead of traversing twice, I saved the elements in a list while finding the length of the ll. Then using length - m + 1 ( for zero indexed lists , 1 is not added) index, element can be retrieved from list.
+
+ Time Complexity:
+ As list is traversed once till end, it will involve n( size/number of elements of ll) operations and one additional operation to get an element from list. So time complexity is of the order of O(n)
+
+
+ Space Complexity:
+ For space, ll stores node value and pointer to next node. As there are n nodes, so 2n space is required. As for ease, a list is also used to store values for faster retrieval, n more spaces are used, so total 3n space is used. So space complexity is of the order of O(n).
+======================================================================================================================================================================================================
