@@ -16,14 +16,16 @@ def question1(s, t):
     if (len(s) < 1) or (len(t) < 1) :
         return "EmptyStrError"
     
-    #s=str(s)
-    #t=str(t)
     
-    sortedT = "".join(sorted(t))    
-   
-    subStrngs = []
+    t_char_counts = {}
+    for char in t:
+        if char in t_char_counts:
+            t_char_counts[char] += 1
+        else:
+            t_char_counts[char] = 1
     
-    lenT = len(sortedT)
+    
+    lenT = len(t)
     lenS = len(s)
     
     if lenS > lenT:
@@ -34,14 +36,26 @@ def question1(s, t):
         return False    
     
     for i in range(rnge):
-        nonSortedSub = s[i:i+lenT]
-        sortedSub = "".join(sorted(nonSortedSub))
-        subStrngs.append(sortedSub)
+        s_subString = s[i:i+lenT]
+        
+        s_char_counts = {}
+        for char in s_subString:
+            if char in s_char_counts:
+                s_char_counts[char] += 1
+            else:
+                s_char_counts[char] = 1
+                
+        stringMatched = True
+        for key in t_char_counts:
+            if key in s_char_counts.keys():
+                if t_char_counts[key] != s_char_counts[key]:
+                    stringMatched = False
+            else:
+                stringMatched = False        
     
-    if(sortedT in subStrngs):
-        return True
-    else:
-        return False
+        if stringMatched:
+            return True
+    return False
     
     
 def test1():
@@ -284,77 +298,38 @@ and the answer would be 3.
 
 '''
 
-class BSTNode(object):
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-        
-class BST(object):
-    def __init__(self, root):
-        self.root = BSTNode(root)
-
-    def insert(self, new_val):
-        self.insert_helper(self.root, new_val)
-
-    def insert_helper(self, current, new_val):
-        if current.value < new_val:
-            if current.right:
-                self.insert_helper(current.right, new_val)
-            else:
-                current.right = BSTNode(new_val)
-        else:
-            if current.left:
-                self.insert_helper(current.left, new_val)
-            else:
-                current.left = BSTNode(new_val)
-
-    def search(self, find_val):
-        return self.search_helper(self.root, find_val)
-
-    def search_helper(self, current, find_val):
-        if current:
-            if current.value == find_val:
-                return True
-            elif current.value < find_val:
-                return self.search_helper(current.right, find_val)
-            else:
-                return self.search_helper(current.left, find_val)
-        return False
-
 def question4(T, r, n1, n2):
     
-    tree = BST(r)
+    parentFound = False
+    newParent = r
     
-    lst = [r]
-
-    while len(lst) > 0:
-        #count += 1
-        k = lst.pop()
-        chd = T[k]
-        for i in range(len(chd)):
-            if chd[i] == 1 :
-                lst.append(i)
-                tree.insert(i)
-
-    prnt = tree.root
-    prev = prnt
-    
-    prod = (n1 - r) * (n2 - r)    
-
-    if prod < 0:
-        return prnt.value
-    else:
-        while (prod > 0) & (prnt.left is not None) & (prnt.right is not None):
-            prev = prnt
-            if (n1 > r):
-                prnt = prev.right
-            else:
-                prnt = prev.left
-            r = prnt.value
-            prod = (n1 - r) * (n2 - r)
+    while (not parentFound) & (newParent is not None):
+        prod = (n1 - r) * (n2 - r)
+        
+        if prod < 0:
+            parentFound = True
+            return r
+        else:
+            parentFound = False
+            prevParent = r
+            
+            chd = T[r]
+            
+            newParent = None
+            
+            for i in range(len(chd)):
+                if chd[i] == 1:
+                    if n1 > r:
+                        if i > r:
+                            newParent = i
+                            break
+                    else:
+                        if i < r:
+                            newParent = i
+                            break
+            r = newParent     
            
-    return prnt.value  
+    return prevParent  
 
 '''
 Test Data: Tree used in testing below for non-udacity examples
