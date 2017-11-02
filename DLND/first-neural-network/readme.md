@@ -9,13 +9,13 @@
 #### 2. cd into the first-neural-network directory.
 #### 3. Download anaconda or miniconda based on the instructions in the Anaconda lesson.
 #### 4. Create a new conda environment:
-#### 	conda create --name dlnd python=3
+#### 	- conda create --name dlnd python=3
 #### 5. Enter your new environment:
-#### 	1. Mac/Linux: >> source activate dlnd
-#### 	2. Windows: >> activate dlnd
+#### 		1. Mac/Linux: >> source activate dlnd
+#### 		2. Windows: >> activate dlnd
 #### 6. Ensure you have numpy, matplotlib, pandas, and jupyter notebook installed by doing the following:
-#### 	conda install numpy matplotlib pandas jupyter notebook
+#### 	- conda install numpy matplotlib pandas jupyter notebook
 #### 7. Run the following to open up the notebook server:
-### 	jupyter notebook
+#### 	- jupyter notebook
 #### 8. In your browser, open Your_first_neural_network.ipynb
 #### 9. Following the instructions in the notebook will lead you through the project.
