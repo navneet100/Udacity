@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## (Optional) Running the Udacity Deep Learning Foundations image classification project on floydhub.com
 
 You are not required to use FloydHub for this project, but we've provided instructions if you'd like help getting set up.
@@ -48,3 +49,6 @@ Alternatively, If you already stoped the experiment, you can still download the 
 (where ID is the "RUN ID" displayed in the terminal when you run the project; if you lost it you can also find it in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments))
     
 Just run the command above, download `dlnd_image_classification.ipynb` and replace your local version with the newly downloaded one.
+=======
+
+>>>>>>> 7c4445f... Create readme.md
