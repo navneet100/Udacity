@@ -13,9 +13,13 @@ def load_data(path):
     """
     input_file = os.path.join(path)
     with open(input_file, 'r', encoding='utf-8') as f:
+<<<<<<< HEAD
         data = f.read()
 
     return data
+=======
+        return f.read()
+>>>>>>> bbae529... Original from Udacity
 
 
 def preprocess_and_save_data(source_path, target_path, text_to_ids):
@@ -35,17 +39,30 @@ def preprocess_and_save_data(source_path, target_path, text_to_ids):
     source_text, target_text = text_to_ids(source_text, target_text, source_vocab_to_int, target_vocab_to_int)
 
     # Save Data
+<<<<<<< HEAD
     pickle.dump((
         (source_text, target_text),
         (source_vocab_to_int, target_vocab_to_int),
         (source_int_to_vocab, target_int_to_vocab)), open('preprocess.p', 'wb'))
+=======
+    with open('preprocess.p', 'wb') as out_file:
+        pickle.dump((
+            (source_text, target_text),
+            (source_vocab_to_int, target_vocab_to_int),
+            (source_int_to_vocab, target_int_to_vocab)), out_file)
+>>>>>>> bbae529... Original from Udacity
 
 
 def load_preprocess():
     """
     Load the Preprocessed Training data and return them in batches of <batch_size> or less
     """
+<<<<<<< HEAD
     return pickle.load(open('preprocess.p', mode='rb'))
+=======
+    with open('preprocess.p', mode='rb') as in_file:
+        return pickle.load(in_file)
+>>>>>>> bbae529... Original from Udacity
 
 
 def create_lookup_tables(text):
@@ -67,14 +84,24 @@ def save_params(params):
     """
     Save parameters to file
     """
+<<<<<<< HEAD
     pickle.dump(params, open('params.p', 'wb'))
+=======
+    with open('params.p', 'wb') as out_file:
+        pickle.dump(params, out_file)
+>>>>>>> bbae529... Original from Udacity
 
 
 def load_params():
     """
     Load parameters from file
     """
+<<<<<<< HEAD
     return pickle.load(open('params.p', mode='rb'))
+=======
+    with open('params.p', mode='rb') as in_file:
+        return pickle.load(in_file)
+>>>>>>> bbae529... Original from Udacity
 
 
 def batch_data(source, target, batch_size):

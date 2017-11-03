@@ -106,6 +106,7 @@ def images_square_grid(images, mode):
 
     # Scale to 0-255
     images = (((images - images.min()) * 255) / (images.max() - images.min())).astype(np.uint8)
+<<<<<<< HEAD
 	
 	
     #outMin = -0.5
@@ -113,6 +114,8 @@ def images_square_grid(images, mode):
     #images = (outMin + ((images - images.min()) * (outMax - outMin)) / (images.max() - images.min())).astype(np.uint8)
 	
 	
+=======
+>>>>>>> bbae529... Original from Udacity
 
     # Put images in a square arrangement
     images_in_square = np.reshape(
@@ -224,7 +227,10 @@ class Dataset(object):
             current_index += batch_size
 
             yield data_batch / IMAGE_MAX_VALUE - 0.5
+<<<<<<< HEAD
             #yield data_batch / IMAGE_MAX_VALUE - 1
+=======
+>>>>>>> bbae529... Original from Udacity
 
 
 class DLProgress(tqdm):
