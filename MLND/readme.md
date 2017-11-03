@@ -9,8 +9,9 @@
 
 
 ### Predicting Boston Housing Prices - [Model Evaluation & Validation]
-	In this project, a model is built to predict the value of a given house in the Boston real estate market using various statistical analysis tools. 
- The Boston housing dataset for this project originated from the UCI Machine Learning Repository. DecisionTreeRegressor from sklearn library is used to train the model. sklearn grid_search is used to find optimal parameters.
+ In this project, a model is built to predict the value of a given house in the Boston real estate market using various statistical analysis tools. 
+ The Boston housing dataset for this project originated from the UCI Machine Learning Repository. DecisionTreeRegressor from sklearn library is 
+ used to train the model. sklearn grid_search is used to find optimal parameters.
 
 ### Student Intervention System [Supervised Learning]
  The goal for this project is to identify students who might need early intervention before they fail to graduate
