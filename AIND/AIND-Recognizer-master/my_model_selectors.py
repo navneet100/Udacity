@@ -19,9 +19,13 @@ class ModelSelector(object):
                  random_state=14, verbose=False):
         self.words = all_word_sequences
 <<<<<<< HEAD
+<<<<<<< HEAD
         #print(all_word_sequences)
 =======
 >>>>>>> 6d4fb45... Base Code
+=======
+        #print(all_word_sequences)
+>>>>>>> ca20717... Submission_01
         self.hwords = all_word_Xlengths
         self.sequences = all_word_sequences[this_word]
         self.X, self.lengths = all_word_Xlengths[this_word]
@@ -39,10 +43,15 @@ class ModelSelector(object):
         # with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         
 =======
 >>>>>>> 6d4fb45... Base Code
+=======
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+        
+>>>>>>> ca20717... Submission_01
         # warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             hmm_model = GaussianHMM(n_components=num_states, covariance_type="diag", n_iter=1000,
@@ -72,10 +81,14 @@ class SelectorConstant(ModelSelector):
 
 class SelectorBIC(ModelSelector):
 <<<<<<< HEAD
+<<<<<<< HEAD
     """ select the model with the lowest Baysian Information Criterion(BIC) score
 =======
     """ select the model with the lowest Bayesian Information Criterion(BIC) score
 >>>>>>> 6d4fb45... Base Code
+=======
+    """ select the model with the lowest Baysian Information Criterion(BIC) score
+>>>>>>> ca20717... Submission_01
 
     http://www2.imm.dtu.dk/courses/02433/doc/ch6_slides.pdf
     Bayesian information criteria: BIC = -2 * logL + p * logN
@@ -89,6 +102,9 @@ class SelectorBIC(ModelSelector):
         """
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ca20717... Submission_01
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             minBIC = None
@@ -125,6 +141,7 @@ class SelectorBIC(ModelSelector):
             return self.base_model(self.n_constant)
         
         return bestModel 
+<<<<<<< HEAD
 
             
 =======
@@ -134,6 +151,10 @@ class SelectorBIC(ModelSelector):
 
 
 >>>>>>> 6d4fb45... Base Code
+=======
+
+            
+>>>>>>> ca20717... Submission_01
 class SelectorDIC(ModelSelector):
     ''' select best model based on Discriminative Information Criterion
 
@@ -141,14 +162,18 @@ class SelectorDIC(ModelSelector):
     Document Analysis and Recognition, 2003. Proceedings. Seventh International Conference on. IEEE, 2003.
     http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.6208&rep=rep1&type=pdf
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     https://pdfs.semanticscholar.org/ed3d/7c4a5f607201f3848d4c02dd9ba17c791fc2.pdf
 >>>>>>> 6d4fb45... Base Code
+=======
+>>>>>>> ca20717... Submission_01
     DIC = log(P(X(i)) - 1/(M-1)SUM(log(P(X(all but i))
     '''
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
 <<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -188,6 +213,40 @@ class SelectorDIC(ModelSelector):
         raise NotImplementedError
 
 >>>>>>> 6d4fb45... Base Code
+=======
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+        # TODO implement model selection based on DIC scores
+        #raise NotImplementedError
+        try:
+            bestDIC = None
+            bestModel = None
+            
+            for n in range(self.min_n_components, self.max_n_components + 1):        
+                model = self.base_model(n)            
+                logLCurrent  = model.score(self.X, self.lengths )
+                
+                otherWordScores = []
+                
+                for word, (X, lengths) in self.hwords.items():
+                    if word != self.this_word:        
+                        otherWordScores.append(model.score(X, lengths))
+                        
+                meanOthersLogL = np.mean(otherWordScores)
+                
+                diffLogL = logLCurrent - meanOthersLogL
+                if bestDIC == None:
+                    bestDIC = diffLogL
+                    bestModel = model
+                else:
+                    if diffLogL > bestDIC:
+                        bestDIC = diffLogL
+                        bestModel = model
+       
+        except:
+            return self.base_model(self.n_constant)
+        return bestModel 
+>>>>>>> ca20717... Submission_01
 
 class SelectorCV(ModelSelector):
     ''' select best model based on average log Likelihood of cross-validation folds
@@ -196,6 +255,7 @@ class SelectorCV(ModelSelector):
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
 <<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         # TODO implement model selection using CV
@@ -234,3 +294,37 @@ class SelectorCV(ModelSelector):
         # TODO implement model selection using CV
         raise NotImplementedError
 >>>>>>> 6d4fb45... Base Code
+=======
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+        # TODO implement model selection using CV
+        #raise NotImplementedError
+        num_folds = 2
+        
+        try:
+            kf = KFold(n_splits = num_folds)
+            
+            bestCV = None
+            bestModel = None
+            
+            scoreCV = []
+            
+            for n in range(self.min_n_components, self.max_n_components + 1):        
+                for trainIndices, testIndices in kf.split(self.sequences):  
+                    self.X, self.lengths = combine_sequences(trainIndices, self.sequences)   
+                    model = self.base_model(n)                    
+                    X, l = combine_sequences(testIndices, self.sequences)
+                    scoreCV.append(model.score(X, l))   
+                
+                avgScore = np.mean(scoreCV)
+                if bestCV == None:
+                    bestCV = avgScore
+                    bestModel = model
+                else:
+                    if avgScore > bestCV:
+                        bestCV = avgScore
+                        bestModel = model    
+        except:
+            return self.base_model(self.n_constant)
+        
+        return bestModel 
+>>>>>>> ca20717... Submission_01

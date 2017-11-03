@@ -19,15 +19,23 @@ def recognize(models: dict, test_set: SinglesData):
    """
     warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
+<<<<<<< HEAD
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     
 =======
 >>>>>>> 6d4fb45... Base Code
+=======
+    warnings.filterwarnings("ignore", category=RuntimeWarning)
+    
+>>>>>>> ca20717... Submission_01
     probabilities = []
     guesses = []
     # TODO implement the recognizer
     # return probabilities, guesses
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ca20717... Submission_01
     #raise NotImplementedError
     
     for testWord, (X,lengths) in test_set.get_all_Xlengths().items():
@@ -57,6 +65,9 @@ def recognize(models: dict, test_set: SinglesData):
     return probabilities, guesses
 
 
+<<<<<<< HEAD
 =======
     raise NotImplementedError
 >>>>>>> 6d4fb45... Base Code
+=======
+>>>>>>> ca20717... Submission_01
