@@ -7,10 +7,14 @@ from unittest.mock import MagicMock
 
 def _print_success_message():
 <<<<<<< HEAD
+<<<<<<< HEAD
     return print('Tests Passed')
 =======
     print('Tests Passed')
 >>>>>>> bbae529... Original from Udacity
+=======
+    return print('Tests Passed')
+>>>>>>> 307c83c... submission_01
 
 
 def test_folder_path(cifar10_dataset_folder_path):
@@ -77,6 +81,7 @@ def test_one_hot_encode(one_hot_encode):
         'Make sure you save the map of labels to encodings outside of the function.'.format(enc_labels, new_enc_labels)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     for one_hot in new_enc_labels:
         assert (one_hot==1).sum() == 1,\
@@ -88,6 +93,8 @@ def test_one_hot_encode(one_hot_encode):
 
 
 >>>>>>> bbae529... Original from Udacity
+=======
+>>>>>>> 307c83c... submission_01
     _print_success_message()
 
 

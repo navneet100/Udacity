@@ -87,6 +87,7 @@ def test_get_batches(get_batches):
             'Batches returned wrong shape.  Found {}'.format(batches.shape)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         for x in range(batches.shape[2]):
             assert np.array_equal(batches[0,0,x], np.array(range(x * 35, x * 35 + batches.shape[3]))),\
@@ -103,6 +104,8 @@ def test_get_batches(get_batches):
             'The last target of the last batch should be the first input of the first batch. Found {} but expected {}'.format(batches[-1,1,-1], last_seq)
 
 >>>>>>> bbae529... Original from Udacity
+=======
+>>>>>>> 307c83c... submission_01
     _print_success_message()
 
 
@@ -186,10 +189,14 @@ def test_get_inputs(get_inputs):
 def test_get_init_cell(get_init_cell):
     with tf.Graph().as_default():
 <<<<<<< HEAD
+<<<<<<< HEAD
         test_batch_size_ph = tf.placeholder(tf.int32)
 =======
         test_batch_size_ph = tf.placeholder(tf.int32, [])
 >>>>>>> bbae529... Original from Udacity
+=======
+        test_batch_size_ph = tf.placeholder(tf.int32)
+>>>>>>> 307c83c... submission_01
         test_rnn_size = 256
 
         cell, init_state = get_init_cell(test_batch_size_ph, test_rnn_size)
@@ -230,10 +237,14 @@ def test_build_rnn(build_rnn):
         test_rnn_size = 256
         test_rnn_layer_size = 2
 <<<<<<< HEAD
+<<<<<<< HEAD
         test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size)] * test_rnn_layer_size)
 =======
         test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size) for _ in range(test_rnn_layer_size)])
 >>>>>>> bbae529... Original from Udacity
+=======
+        test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size)] * test_rnn_layer_size)
+>>>>>>> 307c83c... submission_01
 
         test_inputs = tf.placeholder(tf.float32, [None, None, test_rnn_size])
         outputs, final_state = build_rnn(test_cell, test_inputs)
@@ -259,6 +270,7 @@ def test_build_nn(build_nn):
         test_input_data = tf.placeholder(tf.int32, test_input_data_shape)
         test_rnn_size = 256
 <<<<<<< HEAD
+<<<<<<< HEAD
         test_rnn_layer_size = 2
         test_vocab_size = 27
         test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size)] * test_rnn_layer_size)
@@ -266,12 +278,18 @@ def test_build_nn(build_nn):
         logits, final_state = build_nn(test_cell, test_rnn_size, test_input_data, test_vocab_size)
 =======
         test_embed_dim = 300
+=======
+>>>>>>> 307c83c... submission_01
         test_rnn_layer_size = 2
         test_vocab_size = 27
-        test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size) for _ in range(test_rnn_layer_size)])
+        test_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(test_rnn_size)] * test_rnn_layer_size)
 
+<<<<<<< HEAD
         logits, final_state = build_nn(test_cell, test_rnn_size, test_input_data, test_vocab_size, test_embed_dim)
 >>>>>>> bbae529... Original from Udacity
+=======
+        logits, final_state = build_nn(test_cell, test_rnn_size, test_input_data, test_vocab_size)
+>>>>>>> 307c83c... submission_01
 
         # Check name
         assert hasattr(final_state, 'name'), \
@@ -328,8 +346,12 @@ def test_pick_word(pick_word):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     _print_success_message()
 =======
     _print_success_message()
 
 >>>>>>> bbae529... Original from Udacity
+=======
+    _print_success_message()
+>>>>>>> 307c83c... submission_01

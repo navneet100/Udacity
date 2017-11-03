@@ -103,6 +103,7 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
         batch = pickle.load(file, encoding='latin1')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     # load the training data
     test_features = batch['data'].reshape((len(batch['data']), 3, 32, 32)).transpose(0, 2, 3, 1)
     test_labels = batch['labels']
@@ -115,16 +116,27 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
 
     # Preprocess and Save all test data
 >>>>>>> bbae529... Original from Udacity
+=======
+    # load the training data
+    test_features = batch['data'].reshape((len(batch['data']), 3, 32, 32)).transpose(0, 2, 3, 1)
+    test_labels = batch['labels']
+
+    # Preprocess and Save all training data
+>>>>>>> 307c83c... submission_01
     _preprocess_and_save(
         normalize,
         one_hot_encode,
         np.array(test_features),
         np.array(test_labels),
 <<<<<<< HEAD
+<<<<<<< HEAD
         'preprocess_training.p')
 =======
         'preprocess_test.p')
 >>>>>>> bbae529... Original from Udacity
+=======
+        'preprocess_training.p')
+>>>>>>> 307c83c... submission_01
 
 
 def batch_features_labels(features, labels, batch_size):
