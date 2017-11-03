@@ -64,11 +64,11 @@
 #### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods
 =======
 
->>>>>>> 7f4a5c8... Create readme.md
-=======
- 
-#### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark. 
- 
-#### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods 
+#### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark.
+
+#### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods
 
 >>>>>>> 0409cfc... readme.md updated
+=======
+
+>>>>>>> 41dfc39... Create readme.md
