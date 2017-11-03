@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [//]: # (Image References)
 
 [image1]: ./images/sample_dog_output.png "Sample Output"
@@ -165,3 +166,6 @@ Currently, if a dog appears 51% German Shephard and 49% poodle, only the German 
 #### (5) Experiment with Multiple Dog/Human Detectors
 
 Perform a systematic evaluation of various methods for detecting humans and dogs in images.  Provide improved methodology for the `face_detector` and `dog_detector` functions.
+=======
+
+>>>>>>> a88fc5c... Create readme.md
