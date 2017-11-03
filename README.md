@@ -6,3 +6,7 @@
 #### Artificial Intelligence Nanodegree
 #### Deep Learning Nanodegree Foundation
 #### Self-Driving Car Engineer NanoDegree
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0aaaf2... readme.md updated
