@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Generate TV Scripts
 ## Introduction
 #### In this project, you'll generate your own Simpsons TV scripts using RNNs. You'll be using part of the Simpsons dataset of scripts from 27 seasons. The Neural Network you'll build will generate a new TV script for a scene at Moe's Tavern.
@@ -13,3 +14,6 @@
 #### Need to work on the following extensions of this project:
 - Generate your own Bach music using like DeepBach.
 - Predict seizures in intracranial EEG recordings on Kaggle.
+=======
+
+>>>>>>> e242354... Create readme.md
