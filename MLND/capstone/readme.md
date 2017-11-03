@@ -56,7 +56,15 @@
 #### 1) As we are using existing data and we have test data available for which actual values are already                  available. We can test our model generated predicted values with these actual values and can see how accurate​ ​our​ ​model​ ​is.
 
 #### 2) Use​ ​Linear​ ​Regression​ ​prediction​ ​Model
+<<<<<<< HEAD
 
 #### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark.
 
 #### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods
+=======
+ 
+#### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark. 
+ 
+#### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods 
+
+>>>>>>> d5f38a7... Resolved readme.md merge conflict by keeping latest file
