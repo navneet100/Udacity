@@ -18,7 +18,10 @@ class ModelSelector(object):
                  min_n_components=2, max_n_components=10,
                  random_state=14, verbose=False):
         self.words = all_word_sequences
+<<<<<<< HEAD
         #print(all_word_sequences)
+=======
+>>>>>>> 6d4fb45... Base Code
         self.hwords = all_word_Xlengths
         self.sequences = all_word_sequences[this_word]
         self.X, self.lengths = all_word_Xlengths[this_word]
@@ -35,8 +38,11 @@ class ModelSelector(object):
     def base_model(self, num_states):
         # with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         
+=======
+>>>>>>> 6d4fb45... Base Code
         # warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             hmm_model = GaussianHMM(n_components=num_states, covariance_type="diag", n_iter=1000,
@@ -65,7 +71,11 @@ class SelectorConstant(ModelSelector):
 
 
 class SelectorBIC(ModelSelector):
+<<<<<<< HEAD
     """ select the model with the lowest Baysian Information Criterion(BIC) score
+=======
+    """ select the model with the lowest Bayesian Information Criterion(BIC) score
+>>>>>>> 6d4fb45... Base Code
 
     http://www2.imm.dtu.dk/courses/02433/doc/ch6_slides.pdf
     Bayesian information criteria: BIC = -2 * logL + p * logN
@@ -78,6 +88,7 @@ class SelectorBIC(ModelSelector):
         :return: GaussianHMM object
         """
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             minBIC = None
@@ -116,17 +127,29 @@ class SelectorBIC(ModelSelector):
         return bestModel 
 
             
+=======
+
+        # TODO implement model selection based on BIC scores
+        raise NotImplementedError
+
+
+>>>>>>> 6d4fb45... Base Code
 class SelectorDIC(ModelSelector):
     ''' select best model based on Discriminative Information Criterion
 
     Biem, Alain. "A model selection criterion for classification: Application to hmm topology optimization."
     Document Analysis and Recognition, 2003. Proceedings. Seventh International Conference on. IEEE, 2003.
     http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.6208&rep=rep1&type=pdf
+<<<<<<< HEAD
+=======
+    https://pdfs.semanticscholar.org/ed3d/7c4a5f607201f3848d4c02dd9ba17c791fc2.pdf
+>>>>>>> 6d4fb45... Base Code
     DIC = log(P(X(i)) - 1/(M-1)SUM(log(P(X(all but i))
     '''
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
 
         # TODO implement model selection based on DIC scores
@@ -159,6 +182,12 @@ class SelectorDIC(ModelSelector):
         except:
             return self.base_model(self.n_constant)
         return bestModel 
+=======
+
+        # TODO implement model selection based on DIC scores
+        raise NotImplementedError
+
+>>>>>>> 6d4fb45... Base Code
 
 class SelectorCV(ModelSelector):
     ''' select best model based on average log Likelihood of cross-validation folds
@@ -167,6 +196,7 @@ class SelectorCV(ModelSelector):
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         # TODO implement model selection using CV
         #raise NotImplementedError
@@ -199,3 +229,8 @@ class SelectorCV(ModelSelector):
             return self.base_model(self.n_constant)
         
         return bestModel 
+=======
+
+        # TODO implement model selection using CV
+        raise NotImplementedError
+>>>>>>> 6d4fb45... Base Code

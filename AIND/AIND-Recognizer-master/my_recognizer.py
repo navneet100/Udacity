@@ -18,12 +18,16 @@ def recognize(models: dict, test_set: SinglesData):
            ['WORDGUESS0', 'WORDGUESS1', 'WORDGUESS2',...]
    """
     warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     
+=======
+>>>>>>> 6d4fb45... Base Code
     probabilities = []
     guesses = []
     # TODO implement the recognizer
     # return probabilities, guesses
+<<<<<<< HEAD
     #raise NotImplementedError
     
     for testWord, (X,lengths) in test_set.get_all_Xlengths().items():
@@ -53,3 +57,6 @@ def recognize(models: dict, test_set: SinglesData):
     return probabilities, guesses
 
 
+=======
+    raise NotImplementedError
+>>>>>>> 6d4fb45... Base Code
