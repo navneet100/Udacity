@@ -60,3 +60,4 @@
 #### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark. 
  
 #### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods 
+
