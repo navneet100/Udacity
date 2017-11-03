@@ -17,6 +17,7 @@ def question1(s, t):
         return "EmptyStrError"
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     t_char_counts = {}
     for char in t:
@@ -30,13 +31,23 @@ def question1(s, t):
 =======
     #s=str(s)
     #t=str(t)
+=======
+>>>>>>> 467155d... submission_02
     
-    sortedT = "".join(sorted(t))    
-   
-    subStrngs = []
+    t_char_counts = {}
+    for char in t:
+        if char in t_char_counts:
+            t_char_counts[char] += 1
+        else:
+            t_char_counts[char] = 1
     
+<<<<<<< HEAD
     lenT = len(sortedT)
 >>>>>>> 63d1a98... submission_01
+=======
+    
+    lenT = len(t)
+>>>>>>> 467155d... submission_02
     lenS = len(s)
     
     if lenS > lenT:
@@ -48,6 +59,9 @@ def question1(s, t):
     
     for i in range(rnge):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 467155d... submission_02
         s_subString = s[i:i+lenT]
         
         s_char_counts = {}
@@ -64,6 +78,7 @@ def question1(s, t):
                     stringMatched = False
             else:
                 stringMatched = False        
+<<<<<<< HEAD
     
         if stringMatched:
             return True
@@ -78,6 +93,12 @@ def question1(s, t):
     else:
         return False
 >>>>>>> 63d1a98... submission_01
+=======
+    
+        if stringMatched:
+            return True
+    return False
+>>>>>>> 467155d... submission_02
     
     
 def test1():
@@ -321,6 +342,7 @@ and the answer would be 3.
 '''
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def question4(T, r, n1, n2):
     
     parentFound = False
@@ -392,40 +414,45 @@ class BST(object):
                 return self.search_helper(current.left, find_val)
         return False
 
+=======
+>>>>>>> 467155d... submission_02
 def question4(T, r, n1, n2):
     
-    tree = BST(r)
+    parentFound = False
+    newParent = r
     
-    lst = [r]
-
-    while len(lst) > 0:
-        #count += 1
-        k = lst.pop()
-        chd = T[k]
-        for i in range(len(chd)):
-            if chd[i] == 1 :
-                lst.append(i)
-                tree.insert(i)
-
-    prnt = tree.root
-    prev = prnt
-    
-    prod = (n1 - r) * (n2 - r)    
-
-    if prod < 0:
-        return prnt.value
-    else:
-        while (prod > 0) & (prnt.left is not None) & (prnt.right is not None):
-            prev = prnt
-            if (n1 > r):
-                prnt = prev.right
-            else:
-                prnt = prev.left
-            r = prnt.value
-            prod = (n1 - r) * (n2 - r)
+    while (not parentFound) & (newParent is not None):
+        prod = (n1 - r) * (n2 - r)
+        
+        if prod < 0:
+            parentFound = True
+            return r
+        else:
+            parentFound = False
+            prevParent = r
+            
+            chd = T[r]
+            
+            newParent = None
+            
+            for i in range(len(chd)):
+                if chd[i] == 1:
+                    if n1 > r:
+                        if i > r:
+                            newParent = i
+                            break
+                    else:
+                        if i < r:
+                            newParent = i
+                            break
+            r = newParent     
            
+<<<<<<< HEAD
     return prnt.value  
 >>>>>>> 63d1a98... submission_01
+=======
+    return prevParent  
+>>>>>>> 467155d... submission_02
 
 '''
 Test Data: Tree used in testing below for non-udacity examples

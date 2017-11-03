@@ -29,28 +29,20 @@ Ref: https://wiki.python.org/moin/TimeComplexity
  Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
  Design :
- For finding whether an anagram  of a string is present in another string, I sorted the search string. Then all possible substrings of length same as that of search string are obtained from main string by iterating from the start of the string till the totalLen - searchStringlength.
- All substrings are sorted and put in a list. If ordered search string is same as any string in this substring list, then it means the anagram of a search string is present in main string. This is based on the logic that same anagrams will have same characters in equal counts. So if two strings in sorted order are same, then it means that they have same count of each character in string.
+ For finding whether an anagram  of a string(t) is present in another string(s), count of each character in string(t) is calculated and kept in dictionary. Then string s is traversed from beginning till total length of sstring s minus the length of string t, in a sliding window pattern with each window of size equal to size of string t. So first string will start from first character of string s and it will have length equal to length of string t, second string will start from second character of string s and will have length equal to length of string t. This is done lenS - lenT times. For each substring of s, dictionary is kept of character counts. Then for each substring, dict is compared with the t character count dictionary built earlier. If these are same, then an anagram exists. If dictionaries do not match for any string, then anagram does not exist.
 
 
  Time Complexity:
- question1 uses python sorted function to sort sub strings of a string and it sorts search string too. 
- question1 repeats sorted function a fixed number(k) of times( number of possible substrings). 
- Then a search operation is performed to find a search string in list of substrings. 
- Sorted function has O(nlog(n)) complexity and since this is repeated for k number of times
- Search operation has O(n) complexity.
-
- Therefore, overall time complexity of question1 is O(n^2 log n) 
- (Note: O(n^2 log n + n) is reduced to O(n^2 log n))
+ Building and taking element from dictionary takes constant time, only main operation is the traversing the string for substrings which takes time of the order of O(len(s)), So time complexity is of the order of O(n).
 
  Space Complexity:
- question1 uses n units to store main string and k units to store search string.
- question1 creates n-k substrings of size k.
- Overall space used is n + k + (n-k) * k which is of the order of O(n)
+Program stores s and t strings but excluding this, it uses dictionary of max length ( 26 keys along with one count number stored). if we consider storage of s and t, then complexity is O(n), otherwise considering the dictionary usage, space complexity is O(1).
 
-
+<<<<<<< HEAD
  Ref: https://wiki.python.org/moin/TimeComplexity
 >>>>>>> 63d1a98... submission_01
+=======
+>>>>>>> 467155d... submission_02
 
 
 ======================================================================================================================================================================================================
@@ -158,7 +150,7 @@ Space Complexity:
 Adjacency matrix requires n * n space and 3 spaces are required for root, and 2 input nodes. Space complexity is O(n^2)
 =======
  Design :
- Using adjacency matrix, row corresponding to the root/base node is selected and from this, root node's children are found. Column indexes of these children show child node numbers. BST tree is built using rows and columns of this adjacency matrix. 2 given input nodes\numbers are compared to these child numbers, if two input numbers are on the opposite( one greater and one less than) side of the root/base node, then the root/base node is the common parent. If these are on the same side,( both numbers greater or both lower) then child on the same side of the base node  is set as the base node with which next comparison is to be made. This process is repeated until two input numbers are found on the opposite sides of base node.
+ Using adjacency matrix, row corresponding to the root/base node is selected and from this, root node's children are found. Column indexes of these children show child node numbers.  2 given input nodes\numbers are compared to these child numbers, if two input numbers are on the opposite( one greater and one less than) side of the root/base node, then the root/base node is the common parent. If these are on the same side,( both numbers greater or both lower) then child on the same side of the base node  is set as the base node with which next comparison is to be made. This process is repeated until two input numbers are found on the opposite sides of base node.
 
  Time Complexity:
  As this involves traversing adjacency row * column times, checking 1 for finding children and  then 2 comparisons for 2 input numbers with children, total operations = n * n *2, so time complexity is O(n^2)
