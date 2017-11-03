@@ -8,6 +8,7 @@ from unittest.mock import MagicMock
 def _print_success_message():
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     return print('Tests Passed')
 =======
     print('Tests Passed')
@@ -15,6 +16,9 @@ def _print_success_message():
 =======
     return print('Tests Passed')
 >>>>>>> 307c83c... submission_01
+=======
+    return print('Tests Passed')
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def test_folder_path(cifar10_dataset_folder_path):
@@ -82,6 +86,7 @@ def test_one_hot_encode(one_hot_encode):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     for one_hot in new_enc_labels:
         assert (one_hot==1).sum() == 1,\
@@ -95,6 +100,8 @@ def test_one_hot_encode(one_hot_encode):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     _print_success_message()
 
 

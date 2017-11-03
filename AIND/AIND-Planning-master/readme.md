@@ -4,6 +4,7 @@
 ## Synopsis
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 This project includes skeletons for the classes and functions needed to solve deterministic logistics planning problems for an Air Cargo transport system using a planning search agent.
 With progression search algorithms like those in the navigation problem from lecture, optimal plans for each
 problem will be computed.  Unlike the navigation problem, there is no simple distance heuristic to aid the agent.
@@ -12,6 +13,11 @@ This project includes skeletons for the classes and functions needed to solve de
 With progression search algorithms like those in the navigation problem from lecture, optimal plans for each 
 problem will be computed.  Unlike the navigation problem, there is no simple distance heuristic to aid the agent. 
 >>>>>>> dc9e870... Base Code
+=======
+This project includes skeletons for the classes and functions needed to solve deterministic logistics planning problems for an Air Cargo transport system using a planning search agent. 
+With progression search algorithms like those in the navigation problem from lecture, optimal plans for each 
+problem will be computed.  Unlike the navigation problem, there is no simple distance heuristic to aid the agent. 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 Instead, you will implement domain-independent heuristics.
 
 ![Progression air cargo search](images/Progression.PNG)
@@ -38,10 +44,14 @@ Instead, you will implement domain-independent heuristics.
 #### READ: Stuart Russel and Peter Norvig text:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) sections:
 =======
 "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) sections: 
 >>>>>>> dc9e870... Base Code
+=======
+"Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) sections: 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 - *The Planning Problem*
 - *Planning with State-space Search*
@@ -66,6 +76,7 @@ Action(Fly(p, from, to),
 - Problem 1 initial state and goal:
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 Init(At(C1, SFO) ∧ At(C2, JFK)
 	∧ At(P1, SFO) ∧ At(P2, JFK)
 	∧ Cargo(C1) ∧ Cargo(C2)
@@ -74,6 +85,11 @@ Init(At(C1, SFO) ∧ At(C2, JFK)
 	∧ At(P1, SFO) ∧ At(P2, JFK) 
 	∧ Cargo(C1) ∧ Cargo(C2) 
 >>>>>>> dc9e870... Base Code
+=======
+Init(At(C1, SFO) ∧ At(C2, JFK) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) 
+	∧ Cargo(C1) ∧ Cargo(C2) 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 	∧ Plane(P1) ∧ Plane(P2)
 	∧ Airport(JFK) ∧ Airport(SFO))
 Goal(At(C1, JFK) ∧ At(C2, SFO))
@@ -81,12 +97,17 @@ Goal(At(C1, JFK) ∧ At(C2, SFO))
 - Problem 2 initial state and goal:
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL)
 	∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL)
 =======
 Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) 
 	∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL) 
 >>>>>>> dc9e870... Base Code
+=======
+Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) ∧ At(P3, ATL) 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 	∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3)
 	∧ Plane(P1) ∧ Plane(P2) ∧ Plane(P3)
 	∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL))
@@ -95,12 +116,17 @@ Goal(At(C1, JFK) ∧ At(C2, SFO) ∧ At(C3, SFO))
 - Problem 3 initial state and goal:
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD)
 	∧ At(P1, SFO) ∧ At(P2, JFK)
 =======
 Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD) 
 	∧ At(P1, SFO) ∧ At(P2, JFK) 
 >>>>>>> dc9e870... Base Code
+=======
+Init(At(C1, SFO) ∧ At(C2, JFK) ∧ At(C3, ATL) ∧ At(C4, ORD) 
+	∧ At(P1, SFO) ∧ At(P2, JFK) 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 	∧ Cargo(C1) ∧ Cargo(C2) ∧ Cargo(C3) ∧ Cargo(C4)
 	∧ Plane(P1) ∧ Plane(P2)
 	∧ Airport(JFK) ∧ Airport(SFO) ∧ Airport(ATL) ∧ Airport(ORD))
@@ -116,14 +142,19 @@ Goal(At(C1, JFK) ∧ At(C3, JFK) ∧ At(C2, SFO) ∧ At(C4, SFO))
 
 #### TODO: Experiment and document metrics for non-heuristic planning solution searches
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Run uninformed planning searches for `air_cargo_p1`, `air_cargo_p2`, and `air_cargo_p3`; provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm. Include the result of at least three of these searches, including breadth-first and depth-first, in your write-up (`breadth_first_search` and `depth_first_graph_search`).
 =======
 * Run uninformed planning searches for `air_cargo_p1`, `air_cargo_p2`, and `air_cargo_p3`; provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm. Include the result of at least three of these searches, including breadth-first and depth-first, in your write-up (`breadth_first_search` and `depth_first_graph_search`). 
 >>>>>>> dc9e870... Base Code
+=======
+* Run uninformed planning searches for `air_cargo_p1`, `air_cargo_p2`, and `air_cargo_p3`; provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm. Include the result of at least three of these searches, including breadth-first and depth-first, in your write-up (`breadth_first_search` and `depth_first_graph_search`). 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 * If depth-first takes longer than 10 minutes for Problem 3 on your system, stop the search and provide this information in your report.
 * Use the `run_search` script for your data collection: from the command line type `python run_search.py -h` to learn more.
 
 >#### Why are we setting the problems up this way?  
+<<<<<<< HEAD
 <<<<<<< HEAD
 >Progression planning problems can be
 solved with graph searches such as breadth-first, depth-first, and A*, where the
@@ -137,6 +168,8 @@ In this simple example, there are five fluents, or state variables, which means 
 space could be as large as ![2to5](images/twotofive.png). Note the following:
 >- While the initial state defines every fluent explicitly, in this case mapped to **TTFFF**, the goal may
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 >Progression planning problems can be 
 solved with graph searches such as breadth-first, depth-first, and A*, where the 
 nodes of the graph are "states" and edges are "actions".  A "state" is the logical 
@@ -148,7 +181,10 @@ single available plane, P1, from one airport to another, SFO to JFK.
 In this simple example, there are five fluents, or state variables, which means our state 
 space could be as large as ![2to5](images/twotofive.png). Note the following:
 >- While the initial state defines every fluent explicitly, in this case mapped to **TTFFF**, the goal may 
+<<<<<<< HEAD
 >>>>>>> dc9e870... Base Code
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 be a set of states.  Any state that is `True` for the fluent `At(C1,JFK)` meets the goal.
 >- Even though PDDL uses variable to describe actions as "action schema", these problems
 are not solved with First Order Logic.  They are solved with Propositional logic and must
@@ -156,22 +192,31 @@ therefore be defined with concrete (non-variable) actions
 and literal (non-variable) fluents in state descriptions.
 >- The fluents here are mapped to a simple string representing the boolean value of each fluent
 <<<<<<< HEAD
+<<<<<<< HEAD
 in the system, e.g. **TTFFTT...TTF**.  This will be the state representation in
 the `AirCargoProblem` class and is compatible with the `Node` and `Problem`
 =======
 in the system, e.g. **TTFFTT...TTF**.  This will be the state representation in 
 the `AirCargoProblem` class and is compatible with the `Node` and `Problem` 
 >>>>>>> dc9e870... Base Code
+=======
+in the system, e.g. **TTFFTT...TTF**.  This will be the state representation in 
+the `AirCargoProblem` class and is compatible with the `Node` and `Problem` 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 classes, and the search methods in the AIMA library.  
 
 
 ### Part 2 - Domain-independent heuristics
 #### READ: Stuart Russel and Peter Norvig text
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) section:
 =======
 "Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) section: 
 >>>>>>> dc9e870... Base Code
+=======
+"Artificial Intelligence: A Modern Approach" 3rd edition chapter 10 *or* 2nd edition Chapter 11 on Planning, available [on the AIMA book site](http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf) section: 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 - *Planning Graph*
 
@@ -191,10 +236,14 @@ classes, and the search methods in the AIMA library.
 
 #### TODO: Experiment and document: metrics of A* searches with these heuristics
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Run A* planning searches using the heuristics you have implemented on `air_cargo_p1`, `air_cargo_p2` and `air_cargo_p3`. Provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm and include the results in your report.
 =======
 * Run A* planning searches using the heuristics you have implemented on `air_cargo_p1`, `air_cargo_p2` and `air_cargo_p3`. Provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm and include the results in your report. 
 >>>>>>> dc9e870... Base Code
+=======
+* Run A* planning searches using the heuristics you have implemented on `air_cargo_p1`, `air_cargo_p2` and `air_cargo_p3`. Provide metrics on number of node expansions required, number of goal tests, time elapsed, and optimality of solution for each search algorithm and include the results in your report. 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 * Use the `run_search` script for this purpose: from the command line type `python run_search.py -h` to learn more.
 
 >#### Why a Planning Graph?

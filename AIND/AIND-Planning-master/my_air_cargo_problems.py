@@ -11,12 +11,15 @@ from my_planning_graph import PlanningGraph
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from functools import lru_cache
 
 >>>>>>> dc9e870... Base Code
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 class AirCargoProblem(Problem):
     def __init__(self, cargos, planes, airports, initial: FluentState, goal: list):
@@ -44,6 +47,7 @@ class AirCargoProblem(Problem):
     def get_actions(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '''
 =======
         """
@@ -51,6 +55,9 @@ class AirCargoProblem(Problem):
 =======
         '''
 >>>>>>> 8d1ef1b... Submission_01
+=======
+        '''
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         This method creates concrete actions (no variables) for all actions in the problem
         domain action schema and turns them into complete Action objects as defined in the
         aimacode.planning module. It is computationally expensive to call this method directly;
@@ -62,6 +69,7 @@ class AirCargoProblem(Problem):
             list of Action objects
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '''
 =======
         """
@@ -69,6 +77,9 @@ class AirCargoProblem(Problem):
 =======
         '''
 >>>>>>> 8d1ef1b... Submission_01
+=======
+        '''
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         # TODO create concrete Action objects based on the domain action schema for: Load, Unload, and Fly
         # concrete actions definition: specific literal action that does not include variables as with the schema
@@ -77,6 +88,7 @@ class AirCargoProblem(Problem):
         # forward search and Planning Graphs must use Propositional Logic
 
         def load_actions():
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             '''Create all concrete Load actions and return a list
@@ -131,6 +143,9 @@ class AirCargoProblem(Problem):
 =======
             '''Create all concrete Load actions and return a list
 >>>>>>> 8d1ef1b... Submission_01
+=======
+            '''Create all concrete Load actions and return a list
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
             :return: list of Action objects
             '''
@@ -177,11 +192,15 @@ class AirCargoProblem(Problem):
 
             :return: list of Action objects
 <<<<<<< HEAD
+<<<<<<< HEAD
             """
 >>>>>>> dc9e870... Base Code
 =======
             '''
 >>>>>>> 8d1ef1b... Submission_01
+=======
+            '''
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
             flys = []
             for fr in self.airports:
                 for to in self.airports:
@@ -189,10 +208,14 @@ class AirCargoProblem(Problem):
                         for p in self.planes:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
                         #for c in self.cargos:                               
                             precond_pos = [expr("At({}, {})".format(p, fr)),
                                            ]
                             precond_neg = [expr("At({}, {})".format(p, to))]
+<<<<<<< HEAD
 =======
                             precond_pos = [expr("At({}, {})".format(p, fr)),
                                            ]
@@ -204,6 +227,8 @@ class AirCargoProblem(Problem):
                                            ]
                             precond_neg = [expr("At({}, {})".format(p, to))]
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
                             effect_add = [expr("At({}, {})".format(p, to))]
                             effect_rem = [expr("At({}, {})".format(p, fr))]
                             fly = Action(expr("Fly({}, {}, {})".format(p, fr, to)),
@@ -226,8 +251,11 @@ class AirCargoProblem(Problem):
         possible_actions = []
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         
         
         kb = PropKB()
@@ -249,11 +277,15 @@ class AirCargoProblem(Problem):
                 #print("possible action.name = ", action.name, " action.args = " , action.args)
                 possible_actions.append(action)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         
         return possible_actions        
         
         
+<<<<<<< HEAD
 =======
         return possible_actions
 
@@ -265,6 +297,8 @@ class AirCargoProblem(Problem):
         
         
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     def result(self, state: str, action: Action):
         """ Return the state that results from executing the given
         action in the given state. The action must be one of
@@ -278,8 +312,11 @@ class AirCargoProblem(Problem):
         new_state = FluentState([], [])
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         
         old_state = decode_state(state, self.state_map)
         
@@ -297,10 +334,13 @@ class AirCargoProblem(Problem):
                 new_state.neg.append(fluent)        
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> dc9e870... Base Code
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         return encode_state(new_state, self.state_map)
 
     def goal_test(self, state: str) -> bool:
@@ -323,6 +363,7 @@ class AirCargoProblem(Problem):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def h_pg_levelsum(self, node: Node):
         '''
         This heuristic uses a planning graph representation of the problem
@@ -334,6 +375,8 @@ class AirCargoProblem(Problem):
     @lru_cache(maxsize=8192)
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     def h_pg_levelsum(self, node: Node):
         '''
         This heuristic uses a planning graph representation of the problem
@@ -341,11 +384,15 @@ class AirCargoProblem(Problem):
         out from the current state in order to satisfy each individual goal
         condition.
 <<<<<<< HEAD
+<<<<<<< HEAD
         """
 >>>>>>> dc9e870... Base Code
 =======
         '''
 >>>>>>> 8d1ef1b... Submission_01
+=======
+        '''
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         # requires implemented PlanningGraph class
         pg = PlanningGraph(self, node.state)
         pg_levelsum = pg.h_levelsum()
@@ -353,6 +400,9 @@ class AirCargoProblem(Problem):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     def h_ignore_preconditions(self, node: Node):
         '''
         This heuristic estimates the minimum number of actions that must be
@@ -375,6 +425,7 @@ class AirCargoProblem(Problem):
         
         count = len(self.goal) - goalsPresent
         
+<<<<<<< HEAD
 =======
     @lru_cache(maxsize=8192)
 =======
@@ -405,6 +456,8 @@ class AirCargoProblem(Problem):
         count = len(self.goal) - goalsPresent
         
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         return count
 
 
@@ -437,8 +490,11 @@ def air_cargo_p2() -> AirCargoProblem:
     # TODO implement Problem 2 definition
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     
     cargos = ['C1', 'C2','C3']
     planes = ['P1', 'P2', 'P3']
@@ -457,6 +513,7 @@ def air_cargo_p2() -> AirCargoProblem:
            expr('At(C2, SFO)'),
            expr('At(C2, ATL)'),
 <<<<<<< HEAD
+<<<<<<< HEAD
 
            expr('At(C3, JFK)'),
            expr('At(C3, SFO)'),
@@ -562,6 +619,8 @@ def air_cargo_p3() -> AirCargoProblem:
     pass
 =======
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
            expr('At(C3, JFK)'),
            expr('At(C3, SFO)'),
@@ -599,9 +658,12 @@ def air_cargo_p3() -> AirCargoProblem:
 def air_cargo_p3() -> AirCargoProblem:
     # TODO implement Problem 3 definition
 <<<<<<< HEAD
+<<<<<<< HEAD
     pass
 >>>>>>> dc9e870... Base Code
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     
     cargos = ['C1', 'C2','C3','C4']
     planes = ['P1', 'P2', 'P3', 'P4']
@@ -667,4 +729,7 @@ def air_cargo_p3() -> AirCargoProblem:
             ]
     return AirCargoProblem(cargos, planes, airports, init, goal)
     
+<<<<<<< HEAD
 >>>>>>> 8d1ef1b... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Question 1
 Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
@@ -25,6 +26,8 @@ Overall space used is n + k + (n-k) * k which is of the order of O(n)
 
 Ref: https://wiki.python.org/moin/TimeComplexity
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
  Question 1
  Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
@@ -39,14 +42,18 @@ Ref: https://wiki.python.org/moin/TimeComplexity
 Program stores s and t strings but excluding this, it uses dictionary of max length ( 26 keys along with one count number stored). if we consider storage of s and t, then complexity is O(n), otherwise considering the dictionary usage, space complexity is O(1).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  Ref: https://wiki.python.org/moin/TimeComplexity
 >>>>>>> 63d1a98... submission_01
 =======
 >>>>>>> 467155d... submission_02
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 ======================================================================================================================================================================================================
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 Question 2
 Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
@@ -63,6 +70,8 @@ time complexity is of the order O(n^2)
 Space Complexity:
 For space, it is making strings of lengths 1 to n/2 , n number of times at different times and storing palindromes in a list. As the strings are created and saved at different times, it can use same space repeatedly and it results in space complexity to be O(n).
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
  Question 2
  Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
 
@@ -77,7 +86,10 @@ For space, it is making strings of lengths 1 to n/2 , n number of times at diffe
 
  Space Complexity:
  For space, it is making strings of lengths 1 to n/2 , n number of times at different times and storing palindromes in a list. As the strings are created and saved at different times, it can use same space repeatedly and it results in space complexity to be O(n).
+<<<<<<< HEAD
 >>>>>>> 63d1a98... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 ======================================================================================================================================================================================================
 Question 3
@@ -85,6 +97,7 @@ Question 3
 Given an undirected graph G, find the minimum spanning tree within G. A minimum spanning tree connects all vertices in a graph with the smallest possible total weight of edges. Your function should take in and return an adjacency list structured like this:
 
 {'A': [('B', 2)],
+<<<<<<< HEAD
 <<<<<<< HEAD
 'B': [('A', 2), ('C', 5)],
 'C': [('B', 5)]}
@@ -107,6 +120,8 @@ Space Complexity:
 For N nodes and K edges, N nodes spaces, 2K edges and 2k Weights are stored. Finalgraph needs N-1 spaces. so Toal spaces used are N + 4k + (N-1) + constant number for temp variables during processing = 2N + 4k + c
 So space complexity is of the order of O(n).
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
  'B': [('A', 2), ('C', 5)], 
  'C': [('B', 5)]}
 Vertices are represented as unique strings. The function definition should be question3(G)
@@ -127,7 +142,10 @@ Vertices are represented as unique strings. The function definition should be qu
  Space Complexity:
  For N nodes and K edges, N nodes spaces, 2K edges and 2k Weights are stored. Finalgraph needs N-1 spaces. so Toal spaces used are N + 4k + (N-1) + constant number for temp variables during processing = 2N + 4k + c
  So space complexity is of the order of O(n).
+<<<<<<< HEAD
 >>>>>>> 63d1a98... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 ======================================================================================================================================================================================================
@@ -139,6 +157,7 @@ Find the least common ancestor between two nodes on a binary search tree. The le
 question4([[0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [1, 0, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4) and the answer would be 3.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Design :
 Using adjacency matrix, row corresponding to the root/base node is selected and from this, root node's children are found. Column indexes of these children show child node numbers. BST tree is built using rows and columns of this adjacency matrix. 2 given input nodes\numbers are compared to these child numbers, if two input numbers are on the opposite( one greater and one less than) side of the root/base node, then the root/base node is the common parent. If these are on the same side,( both numbers greater or both lower) then child on the same side of the base node  is set as the base node with which next comparison is to be made. This process is repeated until two input numbers are found on the opposite sides of base node.
 
@@ -149,6 +168,8 @@ As this involves traversing adjacency row * column times, checking 1 for finding
 Space Complexity:
 Adjacency matrix requires n * n space and 3 spaces are required for root, and 2 input nodes. Space complexity is O(n^2)
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
  Design :
  Using adjacency matrix, row corresponding to the root/base node is selected and from this, root node's children are found. Column indexes of these children show child node numbers.  2 given input nodes\numbers are compared to these child numbers, if two input numbers are on the opposite( one greater and one less than) side of the root/base node, then the root/base node is the common parent. If these are on the same side,( both numbers greater or both lower) then child on the same side of the base node  is set as the base node with which next comparison is to be made. This process is repeated until two input numbers are found on the opposite sides of base node.
 
@@ -158,7 +179,10 @@ Adjacency matrix requires n * n space and 3 spaces are required for root, and 2 
 
  Space Complexity:
  Adjacency matrix requires n * n space and 3 spaces are required for root, and 2 input nodes. Space complexity is O(n^2)
+<<<<<<< HEAD
 >>>>>>> 63d1a98... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 ======================================================================================================================================================================================================
 
 Question 5
@@ -166,6 +190,7 @@ Question 5
 Find the element in a singly linked list that's m elements from the end. For example, if a linked list has 5 elements, the 3rd element from the end is the 3rd element. The function definition should look like question5(ll, m), where ll is the first node of a linked list and m is the "mth number from the end". You should copy/paste the Node class below to use as a representation of a node in the linked list. Return the value of the node at that position.
 
 class Node(object):
+<<<<<<< HEAD
 <<<<<<< HEAD
  def __init__(self, data):
    self.data = data
@@ -182,6 +207,8 @@ Space Complexity:
 For space, ll stores node value and pointer to next node. As there are n nodes, so 2n space is required. As for ease, a list is also used to store values for faster retrieval, n more spaces are used, so total 3n space is used. So space complexity is of the order of O(n).
 ======================================================================================================================================================================================================
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
   def __init__(self, data):
     self.data = data
     self.next = None
@@ -195,5 +222,9 @@ For space, ll stores node value and pointer to next node. As there are n nodes, 
 
  Space Complexity:
  For space, ll stores node value and pointer to next node. As there are n nodes, so 2n space is required. As for ease, a list is also used to store values for faster retrieval, n more spaces are used, so total 3n space is used. So space complexity is of the order of O(n).
+<<<<<<< HEAD
 ======================================================================================================================================================================================================
 >>>>>>> 63d1a98... submission_01
+=======
+======================================================================================================================================================================================================
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0

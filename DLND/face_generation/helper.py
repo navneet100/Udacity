@@ -108,8 +108,11 @@ def images_square_grid(images, mode):
     images = (((images - images.min()) * 255) / (images.max() - images.min())).astype(np.uint8)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 	
 	
     #outMin = -0.5
@@ -118,10 +121,13 @@ def images_square_grid(images, mode):
 	
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     # Put images in a square arrangement
     images_in_square = np.reshape(
@@ -235,12 +241,16 @@ class Dataset(object):
             yield data_batch / IMAGE_MAX_VALUE - 0.5
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             #yield data_batch / IMAGE_MAX_VALUE - 1
 =======
 >>>>>>> bbae529... Original from Udacity
 =======
             #yield data_batch / IMAGE_MAX_VALUE - 1
 >>>>>>> 307c83c... submission_01
+=======
+            #yield data_batch / IMAGE_MAX_VALUE - 1
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 class DLProgress(tqdm):

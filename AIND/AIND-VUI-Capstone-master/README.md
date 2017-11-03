@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 35908f4... Base Code
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 [//]: # (Image References)
 
 [image1]: ./images/pipeline.png "ASR Pipeline"
@@ -218,8 +221,11 @@ In this project, you had the choice to use _either_ spectrogram or MFCC features
 
 We have borrowed the `create_desc_json.py` and `flac_to_wav.sh` files from the [ba-dls-deepspeech](https://github.com/baidu-research/ba-dls-deepspeech) repository, along with some functions used to generate spectrograms.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 1bde814... Create README.md
 =======
 >>>>>>> 35908f4... Base Code
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0

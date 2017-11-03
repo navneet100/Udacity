@@ -2,11 +2,14 @@ import numpy as np
 import tensorflow as tf
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from tensorflow.python.layers.core import Dense
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 import itertools
 import collections
 import helper
@@ -81,6 +84,7 @@ def test_model_inputs(model_inputs):
     with tf.Graph().as_default():
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         input_data, targets, lr, keep_prob = model_inputs()
 =======
         input_data, targets, lr, keep_prob, target_sequence_length, max_target_sequence_length, source_sequence_length = model_inputs()
@@ -88,6 +92,9 @@ def test_model_inputs(model_inputs):
 =======
         input_data, targets, lr, keep_prob = model_inputs()
 >>>>>>> 307c83c... submission_01
+=======
+        input_data, targets, lr, keep_prob = model_inputs()
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         # Check type
         assert input_data.op.type == 'Placeholder',\
@@ -100,6 +107,7 @@ def test_model_inputs(model_inputs):
             'Keep Probability is not a Placeholder.'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         assert target_sequence_length.op.type == 'Placeholder', \
             'Target Sequence Length is not a Placeholder.'
@@ -110,10 +118,13 @@ def test_model_inputs(model_inputs):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         # Check name
         assert input_data.name == 'input:0',\
             'Input has bad name.  Found name {}'.format(input_data.name)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -124,6 +135,8 @@ def test_model_inputs(model_inputs):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         assert keep_prob.name == 'keep_prob:0', \
             'Keep Probability has bad name.  Found name {}'.format(keep_prob.name)
 
@@ -133,6 +146,7 @@ def test_model_inputs(model_inputs):
         assert tf.assert_rank(keep_prob, 0, message='Keep Probability has wrong rank')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         assert tf.assert_rank(target_sequence_length, 1, message='Target Sequence Length has wrong rank')
         assert tf.assert_rank(max_target_sequence_length, 0, message='Max Target Sequence Length has wrong rank')
@@ -140,6 +154,8 @@ def test_model_inputs(model_inputs):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     _print_success_message()
 
@@ -148,6 +164,7 @@ def test_encoding_layer(encoding_layer):
     rnn_size = 512
     batch_size = 64
     num_layers = 3
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -161,10 +178,13 @@ def test_encoding_layer(encoding_layer):
     encoding_embedding_size = 30
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     with tf.Graph().as_default():
         rnn_inputs = tf.placeholder(tf.float32, [batch_size, 22, 1000])
         keep_prob = tf.placeholder(tf.float32)
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         enc_output, states = encoding_layer(rnn_inputs, rnn_size, num_layers, keep_prob,
@@ -175,6 +195,9 @@ def test_encoding_layer(encoding_layer):
 =======
         states = encoding_layer(rnn_inputs, rnn_size, num_layers, keep_prob)
 >>>>>>> 307c83c... submission_01
+=======
+        states = encoding_layer(rnn_inputs, rnn_size, num_layers, keep_prob)
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         assert len(states) == num_layers,\
             'Found {} state(s). It should be {} states.'.format(len(states), num_layers)
@@ -205,6 +228,7 @@ def test_decoding_layer(decoding_layer):
     with tf.Graph().as_default():
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
 =======
 
@@ -218,6 +242,9 @@ def test_decoding_layer(decoding_layer):
 =======
         dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
 >>>>>>> 307c83c... submission_01
+=======
+        dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         dec_embeddings = tf.placeholder(tf.float32, [vocab_size, embedding_size])
         keep_prob = tf.placeholder(tf.float32)
         state = tf.contrib.rnn.LSTMStateTuple(
@@ -225,6 +252,7 @@ def test_decoding_layer(decoding_layer):
             tf.placeholder(tf.float32, [None, rnn_size]))
         encoder_state = (state, state, state)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         train_output, inf_output = decoding_layer(dec_embed_input, dec_embeddings, encoder_state, vocab_size,
@@ -267,6 +295,10 @@ def test_decoding_layer(decoding_layer):
         train_output, inf_output = decoding_layer(dec_embed_input, dec_embeddings, encoder_state, vocab_size,
                                                   sequence_length, rnn_size, num_layers, target_vocab_to_int, keep_prob)
 >>>>>>> 307c83c... submission_01
+=======
+        train_output, inf_output = decoding_layer(dec_embed_input, dec_embeddings, encoder_state, vocab_size,
+                                                  sequence_length, rnn_size, num_layers, target_vocab_to_int, keep_prob)
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         assert isinstance(train_output, tf.Tensor),\
             'Train Logits is wrong type: {}'.format(type(train_output))
@@ -274,19 +306,26 @@ def test_decoding_layer(decoding_layer):
             'Inference Logits is wrong type: {}'.format(type(inf_output))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> bbae529... Original from Udacity
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         assert train_output.get_shape().as_list() == [batch_size, None, vocab_size],\
             'Train Logits is the wrong shape: {}'.format(train_output.get_shape())
         assert inf_output.get_shape().as_list() == [None, None, vocab_size], \
             'Inference Logits is the wrong shape: {}'.format(inf_output.get_shape())
+<<<<<<< HEAD
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     _print_success_message()
 
 
 def test_seq2seq_model(seq2seq_model):
     batch_size = 64
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     target_vocab_size = 300
@@ -297,12 +336,16 @@ def test_seq2seq_model(seq2seq_model):
 =======
     target_vocab_size = 300
 >>>>>>> 307c83c... submission_01
+=======
+    target_vocab_size = 300
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     sequence_length = 22
     rnn_size = 512
     num_layers = 3
     target_vocab_to_int = {'<EOS>': 1, '<GO>': 3}
 
     with tf.Graph().as_default():
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         input_data = tf.placeholder(tf.int32, [64, 22])
@@ -330,6 +373,10 @@ def test_seq2seq_model(seq2seq_model):
         input_data = tf.placeholder(tf.int32, [64, 22])
         target_data = tf.placeholder(tf.int32, [64, 22])
 >>>>>>> 307c83c... submission_01
+=======
+        input_data = tf.placeholder(tf.int32, [64, 22])
+        target_data = tf.placeholder(tf.int32, [64, 22])
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         keep_prob = tf.placeholder(tf.float32)
         train_output, inf_output = seq2seq_model(input_data, target_data, keep_prob, batch_size, sequence_length,
                                                  200, target_vocab_size, 64, 80, rnn_size, num_layers, target_vocab_to_int)
@@ -344,6 +391,7 @@ def test_seq2seq_model(seq2seq_model):
         assert inf_output.get_shape().as_list() == [None, None, target_vocab_size], \
             'Inference Logits is the wrong shape: {}'.format(inf_output.get_shape())
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         input_data = tf.placeholder(tf.int32, [batch_size, sequence_length])
         target_data = tf.placeholder(tf.int32, [batch_size, sequence_length])
@@ -382,6 +430,8 @@ def test_seq2seq_model(seq2seq_model):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     _print_success_message()
 
@@ -406,6 +456,7 @@ def test_sentence_to_seq(sentence_to_seq):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 def test_process_decoding_input(process_decoding_input):
 =======
 def test_process_encoding_input(process_encoding_input):
@@ -413,11 +464,15 @@ def test_process_encoding_input(process_encoding_input):
 =======
 def test_process_decoding_input(process_decoding_input):
 >>>>>>> 307c83c... submission_01
+=======
+def test_process_decoding_input(process_decoding_input):
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     batch_size = 2
     seq_length = 3
     target_vocab_to_int = {'<GO>': 3}
     with tf.Graph().as_default():
         target_data = tf.placeholder(tf.int32, [batch_size, seq_length])
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         dec_input = process_decoding_input(target_data, target_vocab_to_int, batch_size)
@@ -427,6 +482,9 @@ def test_process_decoding_input(process_decoding_input):
 =======
         dec_input = process_decoding_input(target_data, target_vocab_to_int, batch_size)
 >>>>>>> 307c83c... submission_01
+=======
+        dec_input = process_decoding_input(target_data, target_vocab_to_int, batch_size)
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
         assert dec_input.get_shape() == (batch_size, seq_length),\
             'Wrong shape returned.  Found {}'.format(dec_input.get_shape())
@@ -454,6 +512,7 @@ def test_decoding_layer_train(decoding_layer_train):
         with tf.variable_scope("decoding") as decoding_scope:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             dec_cell = tf.contrib.rnn.MultiRNNCell([tf.contrib.rnn.BasicLSTMCell(rnn_size)] * num_layers)
             output_fn = lambda x: tf.contrib.layers.fully_connected(x, vocab_size, None, scope=decoding_scope)
             dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
@@ -477,6 +536,11 @@ def test_decoding_layer_train(decoding_layer_train):
             output_fn = lambda x: tf.contrib.layers.fully_connected(x, vocab_size, None, scope=decoding_scope)
             dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
 >>>>>>> 307c83c... submission_01
+=======
+            dec_cell = tf.contrib.rnn.MultiRNNCell([tf.contrib.rnn.BasicLSTMCell(rnn_size)] * num_layers)
+            output_fn = lambda x: tf.contrib.layers.fully_connected(x, vocab_size, None, scope=decoding_scope)
+            dec_embed_input = tf.placeholder(tf.float32, [batch_size, 22, embedding_size])
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
             keep_prob = tf.placeholder(tf.float32)
             state = tf.contrib.rnn.LSTMStateTuple(
                 tf.placeholder(tf.float32, [None, rnn_size]),
@@ -486,6 +550,7 @@ def test_decoding_layer_train(decoding_layer_train):
             train_logits = decoding_layer_train(encoder_state, dec_cell, dec_embed_input, sequence_length,
                                  decoding_scope, output_fn, keep_prob)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
             assert isinstance(train_decoder_output, tf.contrib.seq2seq.BasicDecoderOutput),\
@@ -498,6 +563,10 @@ def test_decoding_layer_train(decoding_layer_train):
             assert train_logits.get_shape().as_list() == [batch_size, None, vocab_size], \
                 'Wrong shape returned.  Found {}'.format(train_logits.get_shape())
 >>>>>>> 307c83c... submission_01
+=======
+            assert train_logits.get_shape().as_list() == [batch_size, None, vocab_size], \
+                'Wrong shape returned.  Found {}'.format(train_logits.get_shape())
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     _print_success_message()
 
@@ -505,11 +574,14 @@ def test_decoding_layer_train(decoding_layer_train):
 def test_decoding_layer_infer(decoding_layer_infer):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     batch_size = 64
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     vocab_size = 1000
     sequence_length = 22
     embedding_size = 200
@@ -518,6 +590,7 @@ def test_decoding_layer_infer(decoding_layer_infer):
 
     with tf.Graph().as_default():
         with tf.variable_scope("decoding") as decoding_scope:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             dec_cell = tf.contrib.rnn.MultiRNNCell([tf.contrib.rnn.BasicLSTMCell(rnn_size)] * num_layers)
@@ -544,6 +617,11 @@ def test_decoding_layer_infer(decoding_layer_infer):
             output_fn = lambda x: tf.contrib.layers.fully_connected(x, vocab_size, None, scope=decoding_scope)
             dec_embeddings = tf.placeholder(tf.float32, [vocab_size, embedding_size])
 >>>>>>> 307c83c... submission_01
+=======
+            dec_cell = tf.contrib.rnn.MultiRNNCell([tf.contrib.rnn.BasicLSTMCell(rnn_size)] * num_layers)
+            output_fn = lambda x: tf.contrib.layers.fully_connected(x, vocab_size, None, scope=decoding_scope)
+            dec_embeddings = tf.placeholder(tf.float32, [vocab_size, embedding_size])
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
             keep_prob = tf.placeholder(tf.float32)
             state = tf.contrib.rnn.LSTMStateTuple(
                 tf.placeholder(tf.float32, [None, rnn_size]),
@@ -554,6 +632,7 @@ def test_decoding_layer_infer(decoding_layer_infer):
                                 sequence_length, vocab_size, decoding_scope, output_fn, keep_prob)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             assert infer_logits_output.sample_id.get_shape().as_list() == [batch_size, None], \
                  'Wrong shape returned.  Found {}'.format(infer_logits_output.sample_id.get_shape())
 >>>>>>> bbae529... Original from Udacity
@@ -561,5 +640,9 @@ def test_decoding_layer_infer(decoding_layer_infer):
             assert infer_logits.get_shape().as_list() == [None, None, vocab_size], \
                  'Wrong shape returned.  Found {}'.format(infer_logits.get_shape())
 >>>>>>> 307c83c... submission_01
+=======
+            assert infer_logits.get_shape().as_list() == [None, None, vocab_size], \
+                 'Wrong shape returned.  Found {}'.format(infer_logits.get_shape())
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     _print_success_message()

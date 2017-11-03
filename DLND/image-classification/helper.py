@@ -104,11 +104,15 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     # load the training data
     test_features = batch['data'].reshape((len(batch['data']), 3, 32, 32)).transpose(0, 2, 3, 1)
     test_labels = batch['labels']
 
     # Preprocess and Save all training data
+<<<<<<< HEAD
 =======
     # load the test data
     test_features = batch['data'].reshape((len(batch['data']), 3, 32, 32)).transpose(0, 2, 3, 1)
@@ -123,11 +127,14 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
 
     # Preprocess and Save all training data
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     _preprocess_and_save(
         normalize,
         one_hot_encode,
         np.array(test_features),
         np.array(test_labels),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         'preprocess_training.p')
@@ -137,6 +144,9 @@ def preprocess_and_save_data(cifar10_dataset_folder_path, normalize, one_hot_enc
 =======
         'preprocess_training.p')
 >>>>>>> 307c83c... submission_01
+=======
+        'preprocess_training.p')
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def batch_features_labels(features, labels, batch_size):

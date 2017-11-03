@@ -20,12 +20,16 @@ class ModelSelector(object):
         self.words = all_word_sequences
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         #print(all_word_sequences)
 =======
 >>>>>>> 6d4fb45... Base Code
 =======
         #print(all_word_sequences)
 >>>>>>> ca20717... Submission_01
+=======
+        #print(all_word_sequences)
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         self.hwords = all_word_Xlengths
         self.sequences = all_word_sequences[this_word]
         self.X, self.lengths = all_word_Xlengths[this_word]
@@ -44,6 +48,7 @@ class ModelSelector(object):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         
 =======
@@ -52,6 +57,10 @@ class ModelSelector(object):
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         
 >>>>>>> ca20717... Submission_01
+=======
+        warnings.filterwarnings("ignore", category=RuntimeWarning)
+        
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         # warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             hmm_model = GaussianHMM(n_components=num_states, covariance_type="diag", n_iter=1000,
@@ -82,6 +91,7 @@ class SelectorConstant(ModelSelector):
 class SelectorBIC(ModelSelector):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     """ select the model with the lowest Baysian Information Criterion(BIC) score
 =======
     """ select the model with the lowest Bayesian Information Criterion(BIC) score
@@ -89,6 +99,9 @@ class SelectorBIC(ModelSelector):
 =======
     """ select the model with the lowest Baysian Information Criterion(BIC) score
 >>>>>>> ca20717... Submission_01
+=======
+    """ select the model with the lowest Baysian Information Criterion(BIC) score
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
     http://www2.imm.dtu.dk/courses/02433/doc/ch6_slides.pdf
     Bayesian information criteria: BIC = -2 * logL + p * logN
@@ -103,8 +116,11 @@ class SelectorBIC(ModelSelector):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ca20717... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         try:
             minBIC = None
@@ -142,6 +158,7 @@ class SelectorBIC(ModelSelector):
         
         return bestModel 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             
 =======
@@ -155,6 +172,10 @@ class SelectorBIC(ModelSelector):
 
             
 >>>>>>> ca20717... Submission_01
+=======
+
+            
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 class SelectorDIC(ModelSelector):
     ''' select best model based on Discriminative Information Criterion
 
@@ -163,16 +184,20 @@ class SelectorDIC(ModelSelector):
     http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.6208&rep=rep1&type=pdf
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     https://pdfs.semanticscholar.org/ed3d/7c4a5f607201f3848d4c02dd9ba17c791fc2.pdf
 >>>>>>> 6d4fb45... Base Code
 =======
 >>>>>>> ca20717... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     DIC = log(P(X(i)) - 1/(M-1)SUM(log(P(X(all but i))
     '''
 
     def select(self):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -214,6 +239,8 @@ class SelectorDIC(ModelSelector):
 
 >>>>>>> 6d4fb45... Base Code
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         warnings.filterwarnings("ignore", category=RuntimeWarning)
 
         # TODO implement model selection based on DIC scores
@@ -246,7 +273,10 @@ class SelectorDIC(ModelSelector):
         except:
             return self.base_model(self.n_constant)
         return bestModel 
+<<<<<<< HEAD
 >>>>>>> ca20717... Submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 class SelectorCV(ModelSelector):
     ''' select best model based on average log Likelihood of cross-validation folds
@@ -257,6 +287,9 @@ class SelectorCV(ModelSelector):
         warnings.filterwarnings("ignore", category=DeprecationWarning)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         warnings.filterwarnings("ignore", category=RuntimeWarning)
         # TODO implement model selection using CV
         #raise NotImplementedError
@@ -288,6 +321,7 @@ class SelectorCV(ModelSelector):
         except:
             return self.base_model(self.n_constant)
         
+<<<<<<< HEAD
         return bestModel 
 =======
 
@@ -328,3 +362,6 @@ class SelectorCV(ModelSelector):
         
         return bestModel 
 >>>>>>> ca20717... Submission_01
+=======
+        return bestModel 
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0

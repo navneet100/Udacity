@@ -15,6 +15,7 @@ def load_data(path):
     with open(input_file, 'r', encoding='utf-8') as f:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         data = f.read()
 
     return data
@@ -26,6 +27,11 @@ def load_data(path):
 
     return data
 >>>>>>> 307c83c... submission_01
+=======
+        data = f.read()
+
+    return data
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def preprocess_and_save_data(source_path, target_path, text_to_ids):
@@ -47,12 +53,16 @@ def preprocess_and_save_data(source_path, target_path, text_to_ids):
     # Save Data
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     pickle.dump((
         (source_text, target_text),
         (source_vocab_to_int, target_vocab_to_int),
         (source_int_to_vocab, target_int_to_vocab)), open('preprocess.p', 'wb'))
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     with open('preprocess.p', 'wb') as out_file:
@@ -63,12 +73,15 @@ def preprocess_and_save_data(source_path, target_path, text_to_ids):
 >>>>>>> bbae529... Original from Udacity
 =======
 >>>>>>> 307c83c... submission_01
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def load_preprocess():
     """
     Load the Preprocessed Training data and return them in batches of <batch_size> or less
     """
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return pickle.load(open('preprocess.p', mode='rb'))
@@ -79,6 +92,9 @@ def load_preprocess():
 =======
     return pickle.load(open('preprocess.p', mode='rb'))
 >>>>>>> 307c83c... submission_01
+=======
+    return pickle.load(open('preprocess.p', mode='rb'))
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def create_lookup_tables(text):
@@ -102,6 +118,7 @@ def save_params(params):
     """
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     pickle.dump(params, open('params.p', 'wb'))
 =======
     with open('params.p', 'wb') as out_file:
@@ -110,12 +127,16 @@ def save_params(params):
 =======
     pickle.dump(params, open('params.p', 'wb'))
 >>>>>>> 307c83c... submission_01
+=======
+    pickle.dump(params, open('params.p', 'wb'))
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def load_params():
     """
     Load parameters from file
     """
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return pickle.load(open('params.p', mode='rb'))
@@ -126,6 +147,9 @@ def load_params():
 =======
     return pickle.load(open('params.p', mode='rb'))
 >>>>>>> 307c83c... submission_01
+=======
+    return pickle.load(open('params.p', mode='rb'))
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 
 def batch_data(source, target, batch_size):

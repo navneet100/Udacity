@@ -11,6 +11,9 @@
 #### 4. Create a new conda environment:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 #### 	- conda create --name dlnd python=3
 #### 5. Enter your new environment:
 #### 		1. Mac/Linux: >> source activate dlnd
@@ -19,6 +22,7 @@
 #### 	- conda install numpy matplotlib pandas jupyter notebook
 #### 7. Run the following to open up the notebook server:
 #### 	- jupyter notebook
+<<<<<<< HEAD
 =======
 #### 	conda create --name dlnd python=3
 =======
@@ -36,5 +40,7 @@
 =======
 #### 	- jupyter notebook
 >>>>>>> 7cdb9dd... changed indentation
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 #### 8. In your browser, open Your_first_neural_network.ipynb
 #### 9. Following the instructions in the notebook will lead you through the project.

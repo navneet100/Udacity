@@ -9,10 +9,14 @@ You are not required to use FloydHub for this project, but we've provided instru
 
         pip install -U floyd-cli
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
         
 >>>>>>> bbae529... Original from Udacity
+=======
+        
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     Do this even if you already installed `floyd-cli` before, just to make sure you have the most recent version (Its pace of development is fast!).
 
 3. Associate the command with your Floyd account:
@@ -36,15 +40,20 @@ You are not required to use FloydHub for this project, but we've provided instru
 
     It will be run on a machine with GPU (`--gpu`), using a Tenserflow environment (`--env tensorflow-1.2`), as a Jupyter notebook (`--mode jupyter`), with the cifar-10 dataset available (`--data mat_udacity/datasets/udacity-cifar-10/1:cifar`).
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     
 >>>>>>> bbae529... Original from Udacity
+=======
+    
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 7. Wait for the Jupyter notebook to become available and then access the URL displayed in the terminal (described as "path to jupyter notebook"). You will see the notebook.
 
 8. Remember to explicitly stop the experiment when you are not using the notebook. As long as it runs (even in the background) it will cost GPU hours. You can stop an experiment in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments) or using the `floyd stop` command:
 
         floyd stop ID
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     (where ID is the "RUN ID" displayed in the terminal when you run the project; if you lost it you can also find it in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments))
@@ -54,6 +63,11 @@ You are not required to use FloydHub for this project, but we've provided instru
     (where ID is the "RUN ID" displayed in the terminal when you run the project; if you lost it you can also find it in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments))
     
 >>>>>>> bbae529... Original from Udacity
+=======
+ 
+    (where ID is the "RUN ID" displayed in the terminal when you run the project; if you lost it you can also find it in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments))
+    
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 **Important:** When you run a project it will always start from scratch (i.e. from the state present *locally* on your computer). If you made changes in the remote jupiter notebook during a previous run, the changes will **not** be present in subsequent runs. To make them permanent you need to add the changes to your local project folder. When running the notebook you can download them directly from Jupyter - *File / Download / Notebook*. After downloading it, just replace your local `dlnd_image_classification.ipynb` file with the newly downloaded one.
 
 Alternatively, If you already stoped the experiment, you can still download the file using the `floyd output` command:
@@ -62,10 +76,14 @@ Alternatively, If you already stoped the experiment, you can still download the 
 
 (where ID is the "RUN ID" displayed in the terminal when you run the project; if you lost it you can also find it in the ["Experiments" section on floyd.com](https://www.floydhub.com/experiments))
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     
 >>>>>>> bbae529... Original from Udacity
+=======
+    
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 Just run the command above, download `dlnd_image_classification.ipynb` and replace your local version with the newly downloaded one.
 =======
 

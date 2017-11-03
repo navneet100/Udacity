@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Machine​ ​Learning​ ​Engineer​ ​Nanodegree
 ## Capstone​ ​Project
 =======
@@ -66,6 +67,10 @@
  
 #### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods 
 >>>>>>> 7f75f26... added capstone project
+=======
+# Machine​ ​Learning​ ​Engineer​ ​Nanodegree
+## Capstone​ ​Project
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 ## Predict​ ​Stock​ ​Prices​ ​using​ ​Deep​ ​Learning
 
@@ -123,10 +128,14 @@
 
 #### 2) Use​ ​Linear​ ​Regression​ ​prediction​ ​Model
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 #### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark.
 
 #### 4) Use​ ​Support​ ​vector​ ​Machine(​ ​RBF​ ​and​ ​Poly)​ ​methods
+<<<<<<< HEAD
 =======
 
 #### 3) Find\develop prediction model using KNN(K nearest neighbor) regression model and run the model             on​ ​same​ ​data​ ​as​ ​to​ ​be​ ​used​ ​on​ ​Deep​ ​Learning​ ​model.​ ​KNN​ ​model​ ​will​ ​be​ ​used​ ​as​ ​a​ ​benchmark.
@@ -137,3 +146,5 @@
 =======
 
 >>>>>>> 41dfc39... Create readme.md
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0

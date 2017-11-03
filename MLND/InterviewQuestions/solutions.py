@@ -18,6 +18,9 @@ def question1(s, t):
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     
     t_char_counts = {}
     for char in t:
@@ -28,6 +31,7 @@ def question1(s, t):
     
     
     lenT = len(t)
+<<<<<<< HEAD
 =======
     #s=str(s)
     #t=str(t)
@@ -48,6 +52,8 @@ def question1(s, t):
     
     lenT = len(t)
 >>>>>>> 467155d... submission_02
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     lenS = len(s)
     
     if lenS > lenT:
@@ -60,8 +66,11 @@ def question1(s, t):
     for i in range(rnge):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 467155d... submission_02
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
         s_subString = s[i:i+lenT]
         
         s_char_counts = {}
@@ -79,6 +88,7 @@ def question1(s, t):
             else:
                 stringMatched = False        
 <<<<<<< HEAD
+<<<<<<< HEAD
     
         if stringMatched:
             return True
@@ -94,11 +104,16 @@ def question1(s, t):
         return False
 >>>>>>> 63d1a98... submission_01
 =======
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     
         if stringMatched:
             return True
     return False
+<<<<<<< HEAD
 >>>>>>> 467155d... submission_02
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
     
     
 def test1():
@@ -343,6 +358,7 @@ and the answer would be 3.
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 def question4(T, r, n1, n2):
     
     parentFound = False
@@ -416,6 +432,8 @@ class BST(object):
 
 =======
 >>>>>>> 467155d... submission_02
+=======
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 def question4(T, r, n1, n2):
     
     parentFound = False
@@ -448,11 +466,15 @@ def question4(T, r, n1, n2):
             r = newParent     
            
 <<<<<<< HEAD
+<<<<<<< HEAD
     return prnt.value  
 >>>>>>> 63d1a98... submission_01
 =======
     return prevParent  
 >>>>>>> 467155d... submission_02
+=======
+    return prevParent  
+>>>>>>> a7568d9f54a58f4956b458fc6a3732a6565cdda0
 
 '''
 Test Data: Tree used in testing below for non-udacity examples
