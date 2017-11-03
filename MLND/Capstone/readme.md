@@ -1,4 +1,4 @@
-# Machine​ ​Learning​ ​Engineer​ ​Nanodegree 
+# Machine​ ​Learning​ ​Engineer​ ​Nanodegree
 ## Capstone​ ​Project
 
 ## Predict​ ​Stock​ ​Prices​ ​using​ ​Deep​ ​Learning
